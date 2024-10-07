@@ -39,22 +39,4 @@ class AppColors {
 
   // Semantic
   static const error = Color(0xffFD7563);
-
-  // Illustration-Main
-  static const red = Color(0xffFF6668);
-  static const yellow = Color(0xffFFCC31);
-  static const green = Color(0xff5DD375);
-  static const blue = Color(0xff66A3FF);
-  static const purple = Color(0xff9576F0);
-  static const pink = Color(0xffFF7CAB);
-  static const gray = Color(0xffC8C8C8);
-
-  // Illustration-Light
-  static const redLight = Color(0xffFF8586);
-  static const yellowLight = Color(0xffFFE085);
-  static const greenLight = Color(0xff94E4A5);
-  static const blueLight = Color(0xff99C2FF);
-  static const purpleLight = Color(0xffB69CFF);
-  static const pinkLight = Color(0xffFFB0CC);
-  static const grayLight = Color(0xffE6E6E6);
 }
