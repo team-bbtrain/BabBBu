@@ -25,12 +25,12 @@ class AppColors {
 
   // Gray scale
   static const white = Color(0xffFFFFFF);
-  static const backgroundLine50 = Color(0xffFEFEFE);
-  static const backgroundLine100 = Color(0xffFAFAFA);
-  static const backgroundLine200 = Color(0xffEFEFEF);
-  static const lineBackground50 = Color(0xffF5F5F5);
-  static const lineBackground100 = Color(0xffE4E4E4);
-  static const lineBackground200 = Color(0xffD9D9D9);
+  static const background50 = Color(0xffFEFEFE);
+  static const background100 = Color(0xffFAFAFA);
+  static const background200 = Color(0xffEFEFEF);
+  static const line50 = Color(0xffF5F5F5);
+  static const line100 = Color(0xffE4E4E4);
+  static const line200 = Color(0xffD9D9D9);
   static const text50 = Color(0xffBDBDBD);
   static const text100 = Color(0xff9E9E9E);
   static const text200 = Color(0xff616161);
