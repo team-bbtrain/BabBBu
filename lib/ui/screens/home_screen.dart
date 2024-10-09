@@ -15,16 +15,24 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Welcome to Home Screen!'),
-            // ⭐️ 아이콘 사용법
-            SvgPicture.asset(
-              AppAssets.icons.arrowLine,
+            // 이미지 사용법
+            // 2x, 3x 이미지는 준비만 해두면 플러터가 자동으로 디바이스의 해상도에 맞는 이미지를 사용
+            Image.asset(
+              AppAssets.images.logo,
             ),
+            Image.asset(
+              AppAssets.images.character,
+              width: 200,
+            ),
+            // ⭐️ 아이콘 사용법
             // 크기 조절
             SvgPicture.asset(
               AppAssets.icons.handEmoji,
               width: 50,
               height: 50,
+            ),
+            SvgPicture.asset(
+              AppAssets.icons.arrowLine,
             ),
             // 색상 변경
             SvgPicture.asset(

@@ -3,7 +3,10 @@ class AppAssets {
   static final AppIcons icons = AppIcons();
 }
 
-class AppImages {}
+class AppImages {
+  final String logo = 'assets/images/logo.png';
+  final String character = 'assets/images/character.png';
+}
 
 class AppIcons {
   final String alarmClock = 'assets/icons/alarm_clock.svg';
