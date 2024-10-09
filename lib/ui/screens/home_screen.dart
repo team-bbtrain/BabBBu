@@ -1,12 +1,15 @@
 import 'package:BabBBu/ui/assets/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import '../theme/colors.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Home'),
@@ -48,6 +51,16 @@ class HomeScreen extends StatelessWidget {
               child: SvgPicture.asset(
                 AppAssets.icons.arrowLine,
               ),
+            ),
+            Text(
+              'It is a title',
+              style: textTheme.titleLarge!.copyWith(
+                color: AppColors.primaryOrange600,
+              ),
+            ),
+            Text(
+              'Welcome to Home Screen!',
+              style: textTheme.bodyLarge,
             ),
           ],
         ),
