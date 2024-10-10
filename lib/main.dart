@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'ui/screens/home_screen.dart';
 import 'ui/screens/map_screen.dart';
 import 'ui/screens/settings_screen.dart';
+import 'ui/theme/theme.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,10 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter App',
-      theme: ThemeData(
-        useMaterial3: false,
-        primarySwatch: Colors.blue,
-      ),
+      theme: AppTheme.lightTheme,
       home: MainScreen(),
     );
   }
