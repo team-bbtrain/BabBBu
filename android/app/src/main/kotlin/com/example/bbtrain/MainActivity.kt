@@ -1,4 +1,4 @@
-package com.example.bbtrain
+package com.example.BabBBu
 
 import io.flutter.embedding.android.FlutterActivity
 
