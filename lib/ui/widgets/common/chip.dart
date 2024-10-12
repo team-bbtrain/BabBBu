@@ -9,12 +9,10 @@ enum AppChipSize {
 }
 
 class AppChipProperties {
-  final double fontSize;
   final double chipHeight;
   final double iconSize;
 
   const AppChipProperties({
-    required this.fontSize,
     required this.chipHeight,
     required this.iconSize,
   });
@@ -22,11 +20,9 @@ class AppChipProperties {
   static AppChipProperties properties(AppChipSize size) {
     switch (size) {
       case AppChipSize.medium:
-        return const AppChipProperties(
-            fontSize: 12, chipHeight: 40, iconSize: 20);
+        return const AppChipProperties(chipHeight: 40, iconSize: 20);
       case AppChipSize.large:
-        return const AppChipProperties(
-            fontSize: 13, chipHeight: 44, iconSize: 24);
+        return const AppChipProperties(chipHeight: 44, iconSize: 24);
     }
   }
 }
