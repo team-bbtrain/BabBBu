@@ -1,4 +1,5 @@
 import 'package:BabBBu/ui/theme/colors.dart';
+import 'package:BabBBu/ui/theme/fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -64,6 +65,8 @@ class _AppChipState extends State<AppChip> {
         },
         backgroundColor:
             isActive ? AppColors.primaryOrange500 : AppColors.line50,
+        side: BorderSide.none,
+        shape: const StadiumBorder(),
         label: Row(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -82,11 +85,7 @@ class _AppChipState extends State<AppChip> {
             ],
             Text(
               widget.text,
-              style: TextStyle(
-                  fontSize: properties.fontSize,
-                  // TODO: 폰트
-                  color:
-                      isActive ? AppColors.white : AppColors.secondaryBlue600),
+              style: _getTextStyle(isActive, widget.size),
             ),
             if (widget.rightIcon != null) ...[
               SizedBox(width: 4),
@@ -105,4 +104,19 @@ class _AppChipState extends State<AppChip> {
       ),
     );
   }
+}
+
+TextStyle _getTextStyle(bool isActive, AppChipSize size) {
+  TextStyle baseStyle;
+
+  switch (size) {
+    case AppChipSize.medium:
+      baseStyle = AppTextStyles.captionNormalSemibold;
+    case AppChipSize.large:
+      baseStyle = AppTextStyles.labelNormalSemibold;
+  }
+
+  return baseStyle.copyWith(
+    color: isActive ? AppColors.white : AppColors.secondaryBlue600,
+  );
 }
