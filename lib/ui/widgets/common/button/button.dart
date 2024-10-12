@@ -8,13 +8,11 @@ enum AppButtonSize { medium, small }
 enum AppButtonState { defaultState, activated, sub }
 
 class AppButtonProperties {
-  final BorderRadius borderRadius;
   final TextStyle textStyle;
   final Size buttonSize;
   final ButtonStyle buttonStyle;
 
   const AppButtonProperties({
-    required this.borderRadius,
     required this.textStyle,
     required this.buttonSize,
     required this.buttonStyle,
@@ -27,41 +25,52 @@ class AppButtonProperties {
     if (size == AppButtonSize.medium) {
       if (state == AppButtonState.activated) {
         return AppButtonProperties(
-          borderRadius: BorderRadius.circular(12.0),
           buttonSize: Size(335.0, 56.0),
           textStyle: AppTextStyles.body1ReadingBold,
           buttonStyle: ButtonStyle(
             backgroundColor:
                 WidgetStateProperty.all(AppColors.primaryOrange500),
             foregroundColor: WidgetStateProperty.all(AppColors.background50),
+            shape: WidgetStateProperty.all(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+            ),
           ),
         );
       } else if (state == AppButtonState.sub) {
         return AppButtonProperties(
-          borderRadius: BorderRadius.circular(12.0),
           buttonSize: Size(335.0, 56.0),
           textStyle: AppTextStyles.body1ReadingBold,
           buttonStyle: ButtonStyle(
             backgroundColor: WidgetStateProperty.all(AppColors.primaryOrange50),
             foregroundColor:
                 WidgetStateProperty.all(AppColors.primaryOrange500),
+            shape: WidgetStateProperty.all(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+            ),
           ),
         );
       } else {
         return AppButtonProperties(
-          borderRadius: BorderRadius.circular(12.0),
           buttonSize: Size(335.0, 56.0),
           textStyle: AppTextStyles.body1ReadingBold,
           buttonStyle: ButtonStyle(
             backgroundColor: WidgetStateProperty.all(AppColors.line200),
             foregroundColor: WidgetStateProperty.all(AppColors.background50),
+            shape: WidgetStateProperty.all(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+            ),
           ),
         );
       }
     } else {
       if (state == AppButtonState.activated) {
         return AppButtonProperties(
-          borderRadius: BorderRadius.circular(6.0),
           textStyle: AppTextStyles.labelNormalSemibold,
           buttonSize: Size(double.infinity, 34.0),
           buttonStyle: ButtonStyle(
@@ -71,11 +80,15 @@ class AppButtonProperties {
             backgroundColor:
                 WidgetStateProperty.all(AppColors.primaryOrange500),
             foregroundColor: WidgetStateProperty.all(AppColors.background50),
+            shape: WidgetStateProperty.all(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(6.0),
+              ),
+            ),
           ),
         );
       } else if (state == AppButtonState.sub) {
         return AppButtonProperties(
-          borderRadius: BorderRadius.circular(6.0),
           textStyle: AppTextStyles.labelNormalSemibold,
           buttonSize: Size(double.infinity, 34.0),
           buttonStyle: ButtonStyle(
@@ -85,11 +98,15 @@ class AppButtonProperties {
             backgroundColor: WidgetStateProperty.all(AppColors.primaryOrange50),
             foregroundColor:
                 WidgetStateProperty.all(AppColors.primaryOrange500),
+            shape: WidgetStateProperty.all(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(6.0),
+              ),
+            ),
           ),
         );
       } else {
         return AppButtonProperties(
-          borderRadius: BorderRadius.circular(6.0),
           textStyle: AppTextStyles.labelNormalSemibold,
           buttonSize: Size(double.infinity, 34.0),
           buttonStyle: ButtonStyle(
@@ -98,6 +115,11 @@ class AppButtonProperties {
             ),
             backgroundColor: WidgetStateProperty.all(AppColors.line200),
             foregroundColor: WidgetStateProperty.all(AppColors.background50),
+            shape: WidgetStateProperty.all(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(6.0),
+              ),
+            ),
           ),
         );
       }
@@ -128,12 +150,9 @@ class AppButton extends StatelessWidget {
     final properties = AppButtonProperties.properties(size, state);
 
     return IntrinsicWidth(
-      child: Container(
+      child: SizedBox(
         width: properties.buttonSize.width,
         height: properties.buttonSize.height,
-        decoration: BoxDecoration(
-          borderRadius: properties.borderRadius,
-        ),
         child: FilledButton(
           style: properties.buttonStyle,
           onPressed: onPressed,

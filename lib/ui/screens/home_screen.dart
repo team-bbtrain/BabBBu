@@ -70,6 +70,11 @@ class HomeScreen extends StatelessWidget {
               iconColor: AppColors.white,
               onPressed: () {},
             ),
+            AppButton(
+              label: 'small',
+              size: AppButtonSize.small,
+              onPressed: () {},
+            ),
           ],
         ),
       ),
