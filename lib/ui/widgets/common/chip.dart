@@ -62,7 +62,9 @@ class _AppChipState extends State<AppChip> {
         backgroundColor:
             isActive ? AppColors.primaryOrange500 : AppColors.line50,
         side: BorderSide.none,
-        shape: const StadiumBorder(),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(24),
+        ),
         label: Row(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
