@@ -40,6 +40,11 @@ class AppColors {
   // Semantic
   static const error = Color(0xffFD7563);
 
+  // Social Login
+  static const google = Color(0xfff2f2f2);
+  static const kakao = Color(0xfffee500);
+  static const naver = Color(0xff03c75a);
+
   static const lightColorScheme = ColorScheme(
     brightness: Brightness.light,
     primary: AppColors.primaryOrange500,
