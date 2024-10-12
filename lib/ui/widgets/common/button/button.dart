@@ -1,16 +1,114 @@
 import 'package:BabBBu/ui/theme/colors.dart';
+import 'package:BabBBu/ui/theme/fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-enum ButtonSize { medium, small }
+enum AppButtonSize { medium, small }
 
-enum ButtonState { defaultState, activated, sub }
+enum AppButtonState { defaultState, activated, sub }
+
+class AppButtonProperties {
+  final BorderRadius borderRadius;
+  final TextStyle textStyle;
+  final Size buttonSize;
+  final ButtonStyle buttonStyle;
+
+  const AppButtonProperties({
+    required this.borderRadius,
+    required this.textStyle,
+    required this.buttonSize,
+    required this.buttonStyle,
+  });
+
+  static AppButtonProperties properties(
+    AppButtonSize size,
+    AppButtonState state,
+  ) {
+    if (size == AppButtonSize.medium) {
+      if (state == AppButtonState.activated) {
+        return AppButtonProperties(
+          borderRadius: BorderRadius.circular(12.0),
+          buttonSize: Size(335.0, 56.0),
+          textStyle: AppTextStyles.body1ReadingBold,
+          buttonStyle: ButtonStyle(
+            backgroundColor:
+                WidgetStateProperty.all(AppColors.primaryOrange500),
+            foregroundColor: WidgetStateProperty.all(AppColors.background50),
+          ),
+        );
+      } else if (state == AppButtonState.sub) {
+        return AppButtonProperties(
+          borderRadius: BorderRadius.circular(12.0),
+          buttonSize: Size(335.0, 56.0),
+          textStyle: AppTextStyles.body1ReadingBold,
+          buttonStyle: ButtonStyle(
+            backgroundColor: WidgetStateProperty.all(AppColors.primaryOrange50),
+            foregroundColor:
+                WidgetStateProperty.all(AppColors.primaryOrange500),
+          ),
+        );
+      } else {
+        return AppButtonProperties(
+          borderRadius: BorderRadius.circular(12.0),
+          buttonSize: Size(335.0, 56.0),
+          textStyle: AppTextStyles.body1ReadingBold,
+          buttonStyle: ButtonStyle(
+            backgroundColor: WidgetStateProperty.all(AppColors.line200),
+            foregroundColor: WidgetStateProperty.all(AppColors.background50),
+          ),
+        );
+      }
+    } else {
+      if (state == AppButtonState.activated) {
+        return AppButtonProperties(
+          borderRadius: BorderRadius.circular(6.0),
+          textStyle: AppTextStyles.labelNormalSemibold,
+          buttonSize: Size(double.infinity, 34.0),
+          buttonStyle: ButtonStyle(
+            padding: WidgetStateProperty.all(
+              EdgeInsets.symmetric(vertical: 7.0, horizontal: 16.0),
+            ),
+            backgroundColor:
+                WidgetStateProperty.all(AppColors.primaryOrange500),
+            foregroundColor: WidgetStateProperty.all(AppColors.background50),
+          ),
+        );
+      } else if (state == AppButtonState.sub) {
+        return AppButtonProperties(
+          borderRadius: BorderRadius.circular(6.0),
+          textStyle: AppTextStyles.labelNormalSemibold,
+          buttonSize: Size(double.infinity, 34.0),
+          buttonStyle: ButtonStyle(
+            padding: WidgetStateProperty.all(
+              EdgeInsets.symmetric(vertical: 7.0, horizontal: 16.0),
+            ),
+            backgroundColor: WidgetStateProperty.all(AppColors.primaryOrange50),
+            foregroundColor:
+                WidgetStateProperty.all(AppColors.primaryOrange500),
+          ),
+        );
+      } else {
+        return AppButtonProperties(
+          borderRadius: BorderRadius.circular(6.0),
+          textStyle: AppTextStyles.labelNormalSemibold,
+          buttonSize: Size(double.infinity, 34.0),
+          buttonStyle: ButtonStyle(
+            padding: WidgetStateProperty.all(
+              EdgeInsets.symmetric(vertical: 7.0, horizontal: 16.0),
+            ),
+            backgroundColor: WidgetStateProperty.all(AppColors.line200),
+            foregroundColor: WidgetStateProperty.all(AppColors.background50),
+          ),
+        );
+      }
+    }
+  }
+}
 
 class AppButton extends StatelessWidget {
   final String label;
-  final ButtonSize size;
-  final ButtonState state;
-  // TODO: 더 나은 타입이 있을까
+  final AppButtonSize size;
+  final AppButtonState state;
   final String? icon;
   final Color? iconColor;
   final VoidCallback? onPressed;
@@ -18,80 +116,48 @@ class AppButton extends StatelessWidget {
   const AppButton({
     super.key,
     required this.label,
-    this.size = ButtonSize.medium,
-    this.state = ButtonState.defaultState,
+    this.size = AppButtonSize.medium,
+    this.state = AppButtonState.defaultState,
     this.icon,
     this.iconColor,
     this.onPressed,
   });
 
-  static final Map<ButtonState, ButtonStyle> stateStylesMap = {
-    ButtonState.defaultState: ButtonStyle(
-      backgroundColor: WidgetStateProperty.all(AppColors.line200),
-      foregroundColor: WidgetStateProperty.all(AppColors.background50),
-    ),
-    ButtonState.activated: ButtonStyle(
-      backgroundColor: WidgetStateProperty.all(AppColors.primaryOrange500),
-      foregroundColor: WidgetStateProperty.all(AppColors.background50),
-    ),
-    ButtonState.sub: ButtonStyle(
-      backgroundColor: WidgetStateProperty.all(AppColors.primaryOrange50),
-      foregroundColor: WidgetStateProperty.all(AppColors.primaryOrange500),
-    ),
-  };
-
-  static final Map<ButtonSize, ButtonStyle> sizeStylesMap = {
-    ButtonSize.medium: ButtonStyle(
-      fixedSize: WidgetStateProperty.all(Size(335.0, 56.0)),
-      shape: WidgetStateProperty.all(
-        RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12.0),
-        ),
-      ),
-    ),
-    ButtonSize.small: ButtonStyle(
-      minimumSize: WidgetStateProperty.all(Size(0, 34.0)),
-      shape: WidgetStateProperty.all(
-        RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(6.0),
-        ),
-      ),
-      padding: WidgetStateProperty.all(
-          EdgeInsets.symmetric(vertical: 7.0, horizontal: 16.0)),
-    ),
-  };
-
-  ButtonStyle _getStyle() {
-    final stateStyle =
-        stateStylesMap[state] ?? stateStylesMap[ButtonState.defaultState]!;
-    final sizeStyle = sizeStylesMap[size] ?? sizeStylesMap[ButtonSize.medium]!;
-
-    return stateStyle.merge(sizeStyle);
-  }
-
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      style: _getStyle(),
-      onPressed: onPressed,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (icon != null) ...[
-            SvgPicture.asset(
-              icon!,
-              width: 24,
-              height: 24,
-              colorFilter: iconColor != null
-                  ? ColorFilter.mode(iconColor!, BlendMode.srcIn)
-                  : null,
-            ),
-            SizedBox(width: 10.0),
-          ],
-          Text(
-            label,
+    final properties = AppButtonProperties.properties(size, state);
+
+    return IntrinsicWidth(
+      child: Container(
+        width: properties.buttonSize.width,
+        height: properties.buttonSize.height,
+        decoration: BoxDecoration(
+          borderRadius: properties.borderRadius,
+        ),
+        child: FilledButton(
+          style: properties.buttonStyle,
+          onPressed: onPressed,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (icon != null) ...[
+                SvgPicture.asset(
+                  icon!,
+                  width: 24,
+                  height: 24,
+                  colorFilter: iconColor != null
+                      ? ColorFilter.mode(iconColor!, BlendMode.srcIn)
+                      : null,
+                ),
+                SizedBox(width: 10.0),
+              ],
+              Text(
+                label,
+                style: properties.textStyle,
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
