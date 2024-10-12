@@ -39,4 +39,7 @@ class AppIcons {
   final String shop = 'assets/icons/shop.svg';
   final String timeCircle = 'assets/icons/time_circle.svg';
   final String user = 'assets/icons/user.svg';
+  final String socialGoogle = 'assets/icons/social_google.svg';
+  final String socialKakao = 'assets/icons/social_kakao.svg';
+  final String socialNaver = 'assets/icons/social_naver.svg';
 }
