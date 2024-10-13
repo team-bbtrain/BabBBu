@@ -2,6 +2,7 @@ import 'package:BabBBu/ui/assets/assets.dart';
 import 'package:BabBBu/ui/theme/colors.dart';
 import 'package:BabBBu/ui/widgets/common/button/button.dart';
 import 'package:BabBBu/ui/widgets/common/button/filter_button.dart';
+import 'package:BabBBu/ui/widgets/common/button/floating_button.dart';
 import 'package:BabBBu/ui/widgets/common/button/social_login_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -99,6 +100,11 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
         ),
+      ),
+      floatingActionButton: FloatingButton(
+        label: '지도보기',
+        icon: AppAssets.icons.location,
+        onPressed: () {},
       ),
     );
   }
