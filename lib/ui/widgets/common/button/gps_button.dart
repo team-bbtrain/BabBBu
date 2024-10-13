@@ -37,6 +37,9 @@ class GpsButton extends StatelessWidget {
         style: FilledButton.styleFrom(
           backgroundColor: Colors.transparent,
           padding: EdgeInsets.zero,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(100.0),
+          ),
         ),
         child: SvgPicture.asset(
           AppAssets.icons.gpsFixed,
