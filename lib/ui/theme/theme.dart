@@ -15,7 +15,7 @@ class AppTheme {
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
-    // colorScheme: AppColors.lightColorScheme,
+    colorScheme: AppColors.lightColorScheme,
     textTheme: AppTextStyles.textTheme,
     inputDecorationTheme: _inputDecorationTheme,
     extensions: [],
@@ -24,7 +24,7 @@ class AppTheme {
   static ThemeData darkTheme = ThemeData(
     useMaterial3: true,
     brightness: Brightness.dark,
-    // colorScheme: AppColors.darkColorScheme,
+    colorScheme: AppColors.darkColorScheme,
     textTheme: AppTextStyles.textTheme,
     inputDecorationTheme: _inputDecorationTheme,
     extensions: [],
