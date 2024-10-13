@@ -64,6 +64,7 @@ flutter:
   assets:
   # 아이콘
     - assets/icons/alarm_clock.svg
+    - assets/icons/alarm_clock_20.svg
     - assets/icons/arrow_filled.svg
     - assets/icons/arrow_line_2.svg
     - assets/icons/arrow_line.svg
@@ -71,26 +72,34 @@ flutter:
     - assets/icons/bell_default.svg
     - assets/icons/book.svg
     - assets/icons/box.svg
+    - assets/icons/box_20.svg
     - assets/icons/camera.svg
+    - assets/icons/camera_32.svg
     - assets/icons/cart.svg
+    - assets/icons/cart_20.svg
     - assets/icons/check_filled.svg
     - assets/icons/check_line.svg
     - assets/icons/close_filled.svg
+    - assets/icons/close_filled_32.svg
     - assets/icons/close_line.svg
     - assets/icons/eye_off.svg
     - assets/icons/eye_on.svg
     - assets/icons/filter.svg
     - assets/icons/flag.svg
     - assets/icons/gps_fixed.svg
-    - assets/icons/hand_emoji.svg
+    - assets/icons/hand_emoji_14.svg
+    - assets/icons/hand_emoji_28.svg
     - assets/icons/home.svg
     - assets/icons/info_circle.svg
     - assets/icons/list.svg
     - assets/icons/location.svg
+    - assets/icons/location_20.svg
     - assets/icons/plus.svg
+    - assets/icons/plus_32.svg
     - assets/icons/search_filled.svg
     - assets/icons/search_line.svg
     - assets/icons/shop.svg
+    - assets/icons/shop_20.svg
     - assets/icons/time_circle.svg
     - assets/icons/user.svg
   # 이미지
