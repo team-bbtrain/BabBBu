@@ -16,29 +16,29 @@ class FilterButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 105.0,
-      height: 64.0,
-      decoration: BoxDecoration(
-        color: isActive ? AppColors.primaryOrange50 : AppColors.background100,
-        borderRadius: BorderRadius.circular(12.0),
-        border: Border.all(
+    return OutlinedButton(
+      onPressed: onPressed,
+      style: OutlinedButton.styleFrom(
+        fixedSize: Size(105, 64),
+        backgroundColor:
+            isActive ? AppColors.primaryOrange50 : AppColors.background100,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12.0),
+        ),
+        side: BorderSide(
           color:
               isActive ? AppColors.primaryOrange400 : AppColors.background200,
         ),
       ),
-      child: TextButton(
-        onPressed: onPressed,
-        child: Text(
-          label,
-          style: isActive
-              ? AppTextStyles.body2NormalSemibold.copyWith(
-                  color: AppColors.primaryOrange500,
-                )
-              : AppTextStyles.body2NormalMedium.copyWith(
-                  color: AppColors.text50,
-                ),
-        ),
+      child: Text(
+        label,
+        style: isActive
+            ? AppTextStyles.body2NormalSemibold.copyWith(
+                color: AppColors.primaryOrange500,
+              )
+            : AppTextStyles.body2NormalMedium.copyWith(
+                color: AppColors.text50,
+              ),
       ),
     );
   }

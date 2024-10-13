@@ -84,8 +84,16 @@ class HomeScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  FilterButton(label: '서울', isActive: true),
-                  FilterButton(label: '경기', isActive: false),
+                  FilterButton(
+                    label: '서울',
+                    isActive: true,
+                    onPressed: () {},
+                  ),
+                  FilterButton(
+                    label: '경기',
+                    isActive: false,
+                    onPressed: () {},
+                  ),
                 ],
               ),
             ],
