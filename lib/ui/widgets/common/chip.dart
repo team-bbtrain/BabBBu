@@ -31,6 +31,7 @@ class AppChip extends StatefulWidget {
   final String text;
   final AppChipSize size;
   final String? leftIcon, rightIcon;
+  final VoidCallback? onPressed;
 
   const AppChip({
     super.key,
@@ -38,6 +39,7 @@ class AppChip extends StatefulWidget {
     required this.size,
     this.leftIcon,
     this.rightIcon,
+    this.onPressed,
   });
 
   @override
@@ -55,6 +57,7 @@ class _AppChipState extends State<AppChip> {
       height: properties.chipHeight,
       child: ActionChip(
         onPressed: () {
+          if (widget.onPressed != null) widget.onPressed!();
           setState(() {
             isActive = !isActive;
           });
