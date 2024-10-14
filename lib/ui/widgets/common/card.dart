@@ -82,10 +82,16 @@ Widget _buildChip({required String icon, String? label}) {
                     AppColors.secondaryBlue300, BlendMode.srcIn),
               ),
               SizedBox(width: 4),
-              Text(
-                label ?? '정보없음',
-                style: AppTextStyles.captionReadingRegular
-                    .copyWith(color: AppColors.text200),
+              ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxWidth: 124,
+                ),
+                child: Text(
+                  label ?? '정보없음',
+                  style: AppTextStyles.captionReadingRegular
+                      .copyWith(color: AppColors.text200),
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
             ],
           ),
