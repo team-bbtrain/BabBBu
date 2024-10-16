@@ -3,12 +3,15 @@ import 'fonts.dart';
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  static const _inputDecorationTheme = InputDecorationTheme(
-    hintStyle: TextStyle(
-      // text100 works for both light and dark themes
-      color: AppColors.text100,
-      fontSize: 18.0,
-      fontWeight: FontWeight.w400,
+  static final _inputDecorationTheme = InputDecorationTheme(
+    filled: true,
+    fillColor: AppColors.background200,
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(12),
+      borderSide: BorderSide.none,
+    ),
+    hintStyle: AppTextStyles.body2NormalLight.copyWith(
+      color: AppColors.text50,
     ),
   );
 
