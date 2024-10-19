@@ -1,5 +1,6 @@
 import 'package:BabBBu/ui/assets/assets.dart';
 import 'package:BabBBu/ui/widgets/common/chip.dart';
+import 'package:BabBBu/ui/widgets/common/marker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../theme/colors.dart';
@@ -19,7 +20,14 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // 칩 사용법
+            AppMarker(
+              x: 10,
+              y: 0,
+              label: '동탄1동 푸드뱅크',
+              subLabel: '푸드뱅크',
+              icon: AppAssets.icons.shop20,
+            ),
+            //칩 사용법
             AppChip(
               text: '아침이에요!',
               size: AppChipSize.large,
@@ -37,7 +45,7 @@ class HomeScreen extends StatelessWidget {
             // ⭐️ 아이콘 사용법
             // 크기 조절
             SvgPicture.asset(
-              AppAssets.icons.handEmoji,
+              AppAssets.icons.handEmoji14,
               width: 50,
               height: 50,
             ),
