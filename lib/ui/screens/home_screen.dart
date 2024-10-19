@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../theme/colors.dart';
 
+void printh() {
+  print('h');
+}
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -19,11 +23,36 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            AppSelectChip(
+              chipBarWidth: 300,
+              chipBarHeight: 100,
+              chipBarPadding: 10,
+              chipBarSpace: 8,
+              multipleSelection: false,
+              appChips: [
+                AppChip(
+                  text: '아이고',
+                  size: AppChipSize.medium,
+                  leftIcon: AppAssets.icons.alarmClock,
+                ),
+                AppChip(
+                  text: '후후',
+                  size: AppChipSize.medium,
+                  leftIcon: AppAssets.icons.alarmClock,
+                ),
+                AppChip(
+                  text: '하하',
+                  size: AppChipSize.medium,
+                  leftIcon: AppAssets.icons.alarmClock,
+                ),
+              ],
+            ),
             // 칩 사용법
             AppChip(
               text: '아침이에요!',
               size: AppChipSize.large,
               leftIcon: AppAssets.icons.alarmClock,
+              isSelected: false,
             ),
             // 이미지 사용법
             // 2x, 3x 이미지는 준비만 해두면 플러터가 자동으로 디바이스의 해상도에 맞는 이미지를 사용
