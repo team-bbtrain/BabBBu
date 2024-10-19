@@ -28,31 +28,32 @@ class HomeScreen extends StatelessWidget {
               chipBarHeight: 100,
               chipBarPadding: 10,
               chipBarSpace: 8,
-              multipleSelection: false,
+              multipleSelection: true, // 칩 여러 개 선택 가능 여부
+              onMultipleSelectionChanged: (value) =>
+                  print(value), // 선택한 값들을 리턴해주는 내용의 콜백함수
               appChips: [
                 AppChip(
-                  text: '아이고',
+                  text: '뱅크',
                   size: AppChipSize.medium,
-                  leftIcon: AppAssets.icons.alarmClock,
+                  leftIcon: AppAssets.icons.shop,
                 ),
                 AppChip(
-                  text: '후후',
+                  text: '마켓',
                   size: AppChipSize.medium,
-                  leftIcon: AppAssets.icons.alarmClock,
+                  leftIcon: AppAssets.icons.cart,
                 ),
                 AppChip(
-                  text: '하하',
+                  text: '박스',
                   size: AppChipSize.medium,
-                  leftIcon: AppAssets.icons.alarmClock,
+                  leftIcon: AppAssets.icons.box,
                 ),
               ],
             ),
-            // 칩 사용법
+            // 개별칩 사용법
             AppChip(
               text: '아침이에요!',
               size: AppChipSize.large,
               leftIcon: AppAssets.icons.alarmClock,
-              isSelected: false,
             ),
             // 이미지 사용법
             // 2x, 3x 이미지는 준비만 해두면 플러터가 자동으로 디바이스의 해상도에 맞는 이미지를 사용

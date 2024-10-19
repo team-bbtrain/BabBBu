@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:BabBBu/ui/theme/colors.dart';
 import 'package:BabBBu/ui/theme/fonts.dart';
 import 'package:flutter/material.dart';
@@ -13,8 +11,14 @@ enum AppChipSize {
 class AppChipProperties {
   final double chipHeight;
   final double iconSize;
+  final double? border;
+  final double verticalPadding;
+  final double horizontalPadding;
 
   const AppChipProperties({
+    this.border,
+    required this.verticalPadding,
+    required this.horizontalPadding,
     required this.chipHeight,
     required this.iconSize,
   });
@@ -22,9 +26,19 @@ class AppChipProperties {
   static AppChipProperties properties(AppChipSize size) {
     switch (size) {
       case AppChipSize.medium:
-        return const AppChipProperties(chipHeight: 40, iconSize: 20);
+        return const AppChipProperties(
+          verticalPadding: 8,
+          horizontalPadding: 14,
+          chipHeight: 40,
+          iconSize: 20,
+        );
       case AppChipSize.large:
-        return const AppChipProperties(chipHeight: 44, iconSize: 24);
+        return const AppChipProperties(
+          verticalPadding: 8,
+          horizontalPadding: 18,
+          chipHeight: 44,
+          iconSize: 24,
+        );
     }
   }
 }
@@ -64,14 +78,20 @@ class _AppChipState extends State<AppChip> {
     bool isSelected =
         widget.isSelected ?? _internalIsSelected; // 외부 또는 내부 상태 사용
 
+    AppChipProperties properties = AppChipProperties.properties(widget.size);
+
     return SizedBox(
-      height: AppChipProperties.properties(widget.size).chipHeight,
+      height: properties.chipHeight,
       child: ActionChip(
         backgroundColor:
             isSelected ? AppColors.primaryOrange500 : AppColors.line50,
         side: BorderSide.none,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
+        ),
+        padding: EdgeInsets.symmetric(
+          horizontal: properties.horizontalPadding,
+          vertical: properties.verticalPadding,
         ),
         onPressed: () {
           if (widget.isSelected == null) {
@@ -88,8 +108,8 @@ class _AppChipState extends State<AppChip> {
             if (widget.leftIcon != null) ...[
               SvgPicture.asset(
                 widget.leftIcon!,
-                width: AppChipProperties.properties(widget.size).iconSize,
-                height: AppChipProperties.properties(widget.size).iconSize,
+                width: properties.iconSize,
+                height: properties.iconSize,
                 colorFilter: ColorFilter.mode(
                   isSelected ? AppColors.white : AppColors.secondaryBlue600,
                   BlendMode.srcIn,
@@ -102,8 +122,8 @@ class _AppChipState extends State<AppChip> {
               SizedBox(width: 4),
               SvgPicture.asset(
                 widget.rightIcon!,
-                width: AppChipProperties.properties(widget.size).iconSize,
-                height: AppChipProperties.properties(widget.size).iconSize,
+                width: properties.iconSize,
+                height: properties.iconSize,
                 colorFilter: ColorFilter.mode(
                   isSelected ? AppColors.white : AppColors.secondaryBlue600,
                   BlendMode.srcIn,
@@ -123,10 +143,10 @@ class AppSelectChip extends StatefulWidget {
   final bool multipleSelection;
   // 단수 선택 옵션
   final int? initialSelectedIndex; // 선택된 인덱스
-  final ValueChanged<int>? onSingleSelectionChanged;
+  final ValueChanged<int>? onSingleSelectionChanged; // 콜백함수
   // 복수 선택 옵션
   final List<int>? initialSelectedIndexes; // 선택된 인덱스 리스트
-  final ValueChanged<List<int>>? onMultipleSelectionChanged;
+  final ValueChanged<List<int>>? onMultipleSelectionChanged; // 콜백함수
 
   const AppSelectChip({
     super.key,
