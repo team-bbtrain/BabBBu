@@ -29,12 +29,12 @@ class AppChipProperties {
   }
 }
 
-class AppChip extends StatelessWidget {
+class AppChip extends StatefulWidget {
   final String text;
   final AppChipSize size;
   final String? leftIcon, rightIcon;
   final VoidCallback? onPressed;
-  final bool isSelected;
+  final bool? isSelected; // null일 경우 내부 상태로 관리
 
   const AppChip({
     super.key,
@@ -43,15 +43,29 @@ class AppChip extends StatelessWidget {
     this.leftIcon,
     this.rightIcon,
     this.onPressed,
-    this.isSelected = false,
+    this.isSelected, // 선택 상태를 외부에서 전달받을 수 있음
   });
 
   @override
+  State<AppChip> createState() => _AppChipState();
+}
+
+class _AppChipState extends State<AppChip> {
+  bool _internalIsSelected = false; // 내부 상태 관리
+
+  @override
+  void initState() {
+    super.initState();
+    _internalIsSelected = widget.isSelected ?? false; // 내부 상태 초기화
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final properties = AppChipProperties.properties(size);
+    bool isSelected =
+        widget.isSelected ?? _internalIsSelected; // 외부 또는 내부 상태 사용
 
     return SizedBox(
-      height: properties.chipHeight,
+      height: AppChipProperties.properties(widget.size).chipHeight,
       child: ActionChip(
         backgroundColor:
             isSelected ? AppColors.primaryOrange500 : AppColors.line50,
@@ -59,16 +73,23 @@ class AppChip extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
         ),
-        onPressed: onPressed,
+        onPressed: () {
+          if (widget.isSelected == null) {
+            setState(() {
+              _internalIsSelected = !_internalIsSelected; // 내부 상태 변경
+            });
+          }
+          widget.onPressed?.call();
+        },
         label: Row(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            if (leftIcon != null) ...[
+            if (widget.leftIcon != null) ...[
               SvgPicture.asset(
-                leftIcon!,
-                width: properties.iconSize,
-                height: properties.iconSize,
+                widget.leftIcon!,
+                width: AppChipProperties.properties(widget.size).iconSize,
+                height: AppChipProperties.properties(widget.size).iconSize,
                 colorFilter: ColorFilter.mode(
                   isSelected ? AppColors.white : AppColors.secondaryBlue600,
                   BlendMode.srcIn,
@@ -76,13 +97,13 @@ class AppChip extends StatelessWidget {
               ),
               SizedBox(width: 4),
             ],
-            Text(text, style: _getTextStyle(size, isSelected)),
-            if (rightIcon != null) ...[
+            Text(widget.text, style: _getTextStyle(widget.size, isSelected)),
+            if (widget.rightIcon != null) ...[
               SizedBox(width: 4),
               SvgPicture.asset(
-                rightIcon!,
-                width: properties.iconSize,
-                height: properties.iconSize,
+                widget.rightIcon!,
+                width: AppChipProperties.properties(widget.size).iconSize,
+                height: AppChipProperties.properties(widget.size).iconSize,
                 colorFilter: ColorFilter.mode(
                   isSelected ? AppColors.white : AppColors.secondaryBlue600,
                   BlendMode.srcIn,
@@ -170,8 +191,10 @@ class _AppSelectChipState extends State<AppSelectChip> {
   void _handleSingleSelection(int index) {
     if (selectedChipIndex != index) {
       selectedChipIndex = index;
-      widget.onSingleSelectionChanged?.call(selectedChipIndex!);
+    } else {
+      selectedChipIndex = null;
     }
+    widget.onSingleSelectionChanged?.call(selectedChipIndex!);
   }
 
   void _handleMultipleSelection(int index) {
