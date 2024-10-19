@@ -32,25 +32,36 @@ class AppNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      onTap: onTabTapped,
-      currentIndex: currentIndex,
-      backgroundColor: AppColors.background100,
-      unselectedLabelStyle: AppTextStyles.captionNormalMedium.copyWith(
-        color: AppColors.line200,
+    return Container(
+      height: 100,
+      color: AppColors.background100,
+      child: Padding(
+        padding: EdgeInsetsDirectional.symmetric(
+          horizontal: 20,
+          vertical: 6,
+        ),
+        child: BottomNavigationBar(
+          elevation: 0,
+          onTap: onTabTapped,
+          currentIndex: currentIndex,
+          backgroundColor: AppColors.background100,
+          unselectedLabelStyle: AppTextStyles.captionNormalMedium.copyWith(
+            color: AppColors.line200,
+          ),
+          selectedLabelStyle: AppTextStyles.captionNormalMedium.copyWith(
+            color: AppColors.secondaryBlue800,
+          ),
+          useLegacyColorScheme: false,
+          iconSize: 24,
+          fixedColor: AppColors.secondaryBlue800,
+          unselectedItemColor: AppColors.line200,
+          items: [
+            _buildNavItem(AppAssets.icons.home, 0, '홈'),
+            _buildNavItem(AppAssets.icons.searchFilled, 1, '검색'),
+            _buildNavItem(AppAssets.icons.user, 2, '마이'),
+          ],
+        ),
       ),
-      selectedLabelStyle: AppTextStyles.captionNormalMedium.copyWith(
-        color: AppColors.secondaryBlue800,
-      ),
-      useLegacyColorScheme: false,
-      iconSize: 20,
-      fixedColor: AppColors.secondaryBlue800,
-      unselectedItemColor: AppColors.line200,
-      items: [
-        _buildNavItem(AppAssets.icons.home, 0, '홈'),
-        _buildNavItem(AppAssets.icons.searchFilled, 1, '검색'),
-        _buildNavItem(AppAssets.icons.user, 2, '마이'),
-      ],
     );
   }
 }
