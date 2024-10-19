@@ -4,10 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../theme/colors.dart';
 
-void printh() {
-  print('h');
-}
-
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
