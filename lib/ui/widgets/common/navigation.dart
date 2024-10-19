@@ -19,6 +19,7 @@ class AppNavigationBar extends StatelessWidget {
     return BottomNavigationBarItem(
       icon: SvgPicture.asset(
         iconPath,
+        height: 24,
         colorFilter: ColorFilter.mode(
           currentIndex == index
               ? AppColors.secondaryBlue600
@@ -33,12 +34,11 @@ class AppNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      height: 56,
       color: AppColors.background100,
       child: Padding(
         padding: EdgeInsetsDirectional.symmetric(
           horizontal: 20,
-          vertical: 6,
         ),
         child: BottomNavigationBar(
           elevation: 0,

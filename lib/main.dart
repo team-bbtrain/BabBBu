@@ -46,9 +46,11 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _children[_currentIndex],
-      bottomNavigationBar: AppNavigationBar(
-        currentIndex: _currentIndex,
-        onTabTapped: onTabTapped,
+      bottomNavigationBar: SafeArea(
+        child: AppNavigationBar(
+          currentIndex: _currentIndex,
+          onTabTapped: onTabTapped,
+        ),
       ),
     );
   }
