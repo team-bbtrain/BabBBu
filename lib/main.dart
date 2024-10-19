@@ -1,9 +1,5 @@
-import 'package:BabBBu/ui/assets/assets.dart';
-import 'package:BabBBu/ui/theme/colors.dart';
-import 'package:BabBBu/ui/theme/fonts.dart';
 import 'package:BabBBu/ui/widgets/common/navigation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'ui/screens/home_screen.dart';
 import 'ui/screens/map_screen.dart';
 import 'ui/screens/settings_screen.dart';
