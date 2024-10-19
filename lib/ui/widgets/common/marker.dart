@@ -1,43 +1,89 @@
 import 'package:BabBBu/ui/theme/colors.dart';
+import 'package:BabBBu/ui/theme/fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class AppMarker extends StatelessWidget {
   final String label, subLabel, icon;
-  final double squareWidth, squareHeight, triangleWidth, triangleHeight, border;
-  final double iconSize;
-  final double circleSize;
+  final double x, y;
 
   const AppMarker({
     super.key,
     required this.label,
     required this.icon,
     required this.subLabel,
-    this.squareWidth = 144,
-    this.squareHeight = 52,
-    this.triangleWidth = 14,
-    this.triangleHeight = 11,
-    this.iconSize = 20,
-    this.circleSize = 40,
-    this.border = 1.5,
+    required this.x,
+    required this.y,
   });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: CustomPaint(
+    return Transform.translate(
+      offset: Offset(
+        x,
+        y,
+      ),
+      child: SizedBox(
+        child: CustomPaint(
           painter: MarkerPainter(
-            squareWidth: squareWidth,
-            squareHeight: squareHeight,
-            triangleWidth: triangleWidth,
-            triangleHeight: triangleHeight,
-            border: border,
+            squareWidth: 144,
+            squareHeight: 52,
+            triangleWidth: 14,
+            triangleHeight: 11,
+            border: 1.5,
           ),
-          child: Row(
-            children: [
-              Text('icon'),
-              Text('data'),
-            ],
-          )),
+          child: Container(
+            padding: EdgeInsets.fromLTRB(6, 6, 14, 6),
+            child: Row(
+              children: [
+                SizedBox(
+                  width: 10,
+                ),
+                SvgPicture.asset(
+                  icon,
+                  colorFilter:
+                      ColorFilter.mode(AppColors.white, BlendMode.srcIn),
+                ),
+                SizedBox(
+                  width: 18,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ConstrainedBox(
+                      constraints: BoxConstraints(
+                        maxWidth: 76,
+                      ),
+                      child: Text(
+                        label,
+                        style: AppTextStyles.captionNormalSemibold.copyWith(
+                          color: AppColors.text400,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 2,
+                    ),
+                    ConstrainedBox(
+                      constraints: BoxConstraints(
+                        maxWidth: 76,
+                      ),
+                      child: Text(
+                        subLabel,
+                        style: AppTextStyles.captionNormalMedium.copyWith(
+                          color: AppColors.primaryOrange500,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
@@ -93,6 +139,14 @@ class MarkerPainter extends CustomPainter {
     canvas.drawRRect(roundedRect, borderPaint);
     canvas.drawPath(trianglePath, borderPaint);
     canvas.drawPath(bondingPath, bondingPaint);
+
+    // 동그라미 그리기
+    canvas.drawCircle(
+        Offset(26, 26),
+        20,
+        Paint()
+          ..color = AppColors.primaryOrange500
+          ..style = PaintingStyle.fill);
   }
 
   @override
