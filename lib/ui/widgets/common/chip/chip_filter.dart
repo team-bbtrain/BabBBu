@@ -38,7 +38,7 @@ class AppChipFilter extends StatelessWidget {
         ),
         padding: EdgeInsets.fromLTRB(
           properties.horizontalPadding + 5,
-          properties.verticalPadding + 1,
+          properties.verticalPadding,
           properties.horizontalPadding,
           properties.verticalPadding,
         ),
