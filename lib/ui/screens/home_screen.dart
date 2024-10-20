@@ -1,9 +1,10 @@
 import 'package:BabBBu/ui/assets/assets.dart';
 import 'package:BabBBu/ui/widgets/common/chip.dart';
 import 'package:BabBBu/ui/widgets/common/marker.dart';
+import 'package:BabBBu/ui/theme/colors.dart';
+import 'package:BabBBu/ui/widgets/common/button/button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../theme/colors.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -76,6 +77,18 @@ class HomeScreen extends StatelessWidget {
             Text(
               'Welcome to Home Screen!',
               style: textTheme.bodyLarge,
+            ),
+            AppButton(
+              label: 'This is Button',
+              state: AppButtonState.activated,
+              icon: AppAssets.icons.bellDefault,
+              iconColor: AppColors.white,
+              onPressed: () {},
+            ),
+            AppButton(
+              label: 'small',
+              size: AppButtonSize.small,
+              onPressed: () {},
             ),
           ],
         ),
