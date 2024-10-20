@@ -1,5 +1,7 @@
 import 'package:BabBBu/ui/assets/assets.dart';
-import 'package:BabBBu/ui/widgets/common/chip.dart';
+import 'package:BabBBu/ui/widgets/common/chip/chip.dart';
+import 'package:BabBBu/ui/widgets/common/chip/chip_properties.dart';
+import 'package:BabBBu/ui/widgets/common/chip/choice_chip.dart';
 import 'package:BabBBu/ui/widgets/common/marker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -23,7 +25,7 @@ class HomeScreen extends StatelessWidget {
             AppMarker(
               x: 10,
               y: 0,
-              label: '동탄1동 푸드뱅크',
+              label: '동탄1동희진 푸드뱅크',
               subLabel: '푸드뱅크',
               icon: AppAssets.icons.shop20,
             ),
@@ -32,9 +34,9 @@ class HomeScreen extends StatelessWidget {
               chipBarHeight: 100,
               chipBarPadding: 10,
               chipBarSpace: 8,
-              multipleSelection: true, // 칩 여러 개 선택 가능 여부
+              multipleSelection: false, // 칩 여러 개 선택 가능 여부
               onMultipleSelectionChanged: (value) =>
-                  print(value), // 선택한 값들을 리턴해주는 내용의 콜백함수
+                  print(value), // 선택한 값들을 리턴해주는 내용의 콜백함수 작성 예시
               appChips: [
                 AppChip(
                   text: '뱅크',
