@@ -66,6 +66,7 @@ class HomeScreen extends StatelessWidget {
                 text: '아침이에요!',
                 properties: AppChipProperties.large,
                 leftIcon: AppAssets.icons.alarmClock,
+                onPressed: () {}, // isSelected 속성 변경 시 색상 토글
               ),
               // 이미지 사용법
               // 2x, 3x 이미지는 준비만 해두면 플러터가 자동으로 디바이스의 해상도에 맞는 이미지를 사용
