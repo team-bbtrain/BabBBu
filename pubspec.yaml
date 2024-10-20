@@ -102,6 +102,9 @@ flutter:
     - assets/icons/shop_20.svg
     - assets/icons/time_circle.svg
     - assets/icons/user.svg
+    - assets/icons/social_google.svg
+    - assets/icons/social_kakao.svg
+    - assets/icons/social_naver.svg
   # 이미지
     - assets/images/character.png
     - assets/images/logo.png
