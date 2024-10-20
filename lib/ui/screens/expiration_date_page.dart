@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:BabBBu/ui/widgets/calendar.dart';
+import 'package:BabBBu/ui/widgets/common/image_input.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -13,6 +16,14 @@ class ExpirationDatePickerPage extends StatefulWidget {
 class _ExpirationDatePickerPageState extends State<ExpirationDatePickerPage> {
   DateTime? _selectedDate;
   TextEditingController _dateController = TextEditingController(); // 선택된 날짜 표시
+
+  File? _selectedImage; // 상위 위젯에서 관리할 이미지 상태
+
+  void _handleImageSelected(File? image) {
+    setState(() {
+      _selectedImage = image;
+    });
+  }
 
   // calendar.dart 사용법
   Future<void> _showDatePicker() async {
@@ -62,6 +73,19 @@ class _ExpirationDatePickerPageState extends State<ExpirationDatePickerPage> {
               ),
             ),
             SizedBox(height: 20),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ImageInput(
+                  onImageSelected: _handleImageSelected,
+                ),
+                SizedBox(height: 20),
+                Text(
+                  _selectedImage != null ? 'Image!' : 'No Image',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ],
+            ),
             // 다음 버튼
             ElevatedButton(
               style: ElevatedButton.styleFrom(
