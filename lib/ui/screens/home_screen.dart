@@ -1,5 +1,7 @@
 import 'package:BabBBu/ui/assets/assets.dart';
-import 'package:BabBBu/ui/widgets/common/chip.dart';
+import 'package:BabBBu/ui/widgets/common/chip/chip.dart';
+import 'package:BabBBu/ui/widgets/common/chip/chip_properties.dart';
+import 'package:BabBBu/ui/widgets/common/chip/select_chip.dart';
 import 'package:BabBBu/ui/widgets/common/marker.dart';
 import 'package:BabBBu/ui/theme/colors.dart';
 import 'package:BabBBu/ui/widgets/common/button/button.dart';
@@ -29,14 +31,40 @@ class HomeScreen extends StatelessWidget {
               AppMarker(
                 x: 10,
                 y: 0,
-                label: '동탄1동 푸드뱅크',
+                label: '동탄1동희진 푸드뱅크',
                 subLabel: '푸드뱅크',
                 icon: AppAssets.icons.shop20,
               ),
-              //칩 사용법
+              AppSelectChip(
+                chipBarWidth: 300,
+                chipBarHeight: 100,
+                chipBarPadding: 10,
+                chipBarSpace: 8,
+                multipleSelection: false, // 칩 여러 개 선택 가능 여부
+                onMultipleSelectionChanged: (value) =>
+                    print(value), // 선택한 값들을 리턴해주는 내용의 콜백함수 작성 예시
+                appChips: [
+                  AppChip(
+                    text: '뱅크',
+                    properties: AppChipProperties.medium,
+                    leftIcon: AppAssets.icons.shop,
+                  ),
+                  AppChip(
+                    text: '마켓',
+                    properties: AppChipProperties.medium,
+                    leftIcon: AppAssets.icons.cart,
+                  ),
+                  AppChip(
+                    text: '박스',
+                    properties: AppChipProperties.medium,
+                    leftIcon: AppAssets.icons.box,
+                  ),
+                ],
+              ),
+              // 개별칩 사용법
               AppChip(
                 text: '아침이에요!',
-                size: AppChipSize.large,
+                properties: AppChipProperties.large,
                 leftIcon: AppAssets.icons.alarmClock,
               ),
               // 이미지 사용법
