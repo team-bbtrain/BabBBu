@@ -1,5 +1,6 @@
 import 'package:BabBBu/ui/assets/assets.dart';
 import 'package:BabBBu/ui/widgets/common/chip/chip.dart';
+import 'package:BabBBu/ui/widgets/common/chip/chip_filter.dart';
 import 'package:BabBBu/ui/widgets/common/chip/chip_properties.dart';
 import 'package:BabBBu/ui/widgets/common/chip/select_chip.dart';
 import 'package:BabBBu/ui/widgets/common/marker.dart';
@@ -28,6 +29,12 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              AppChipFilter(
+                text: 'Label',
+                properties: AppChipProperties.small,
+                onPressed: () {},
+                isSelected: true,
+              ),
               AppMarker(
                 x: 10,
                 y: 0,

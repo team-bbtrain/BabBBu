@@ -14,8 +14,8 @@ class AppChipProperties {
   });
 
   static const AppChipProperties small = AppChipProperties(
-    verticalPadding: 8,
-    horizontalPadding: 8,
+    verticalPadding: 4,
+    horizontalPadding: 0,
     chipHeight: 34,
     iconSize: 24,
     border: 1,
