@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'ui/screens/home_screen.dart';
 import 'ui/screens/map_screen.dart';
 import 'ui/screens/settings_screen.dart';
+import 'ui/screens/expiration_date_page.dart';
 import 'ui/theme/theme.dart';
 
 void main() => runApp(MyApp());
@@ -34,6 +35,7 @@ class _MainScreenState extends State<MainScreen> {
     HomeScreen(),
     MapScreen(),
     SettingsScreen(),
+    ExpirationDatePickerPage(),
   ];
 
   void onTabTapped(int index) {
