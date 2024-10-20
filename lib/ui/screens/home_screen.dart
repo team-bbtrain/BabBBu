@@ -1,5 +1,6 @@
 import 'package:BabBBu/ui/assets/assets.dart';
 import 'package:BabBBu/ui/widgets/common/chip.dart';
+import 'package:BabBBu/ui/widgets/common/marker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../theme/colors.dart';
@@ -19,6 +20,13 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            AppMarker(
+              x: 10,
+              y: 0,
+              label: '동탄1동 푸드뱅크',
+              subLabel: '푸드뱅크',
+              icon: AppAssets.icons.shop20,
+            ),
             AppSelectChip(
               chipBarWidth: 300,
               chipBarHeight: 100,
