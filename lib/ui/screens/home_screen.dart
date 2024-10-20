@@ -1,7 +1,7 @@
 import 'package:BabBBu/ui/assets/assets.dart';
 import 'package:BabBBu/ui/widgets/common/chip/chip.dart';
 import 'package:BabBBu/ui/widgets/common/chip/chip_properties.dart';
-import 'package:BabBBu/ui/widgets/common/chip/choice_chip.dart';
+import 'package:BabBBu/ui/widgets/common/chip/select_chip.dart';
 import 'package:BabBBu/ui/widgets/common/marker.dart';
 import 'package:BabBBu/ui/theme/colors.dart';
 import 'package:BabBBu/ui/widgets/common/button/button.dart';
