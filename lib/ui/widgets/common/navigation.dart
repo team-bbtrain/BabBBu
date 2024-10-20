@@ -43,6 +43,7 @@ class AppNavigationBar extends StatelessWidget {
         child: BottomNavigationBar(
           elevation: 0,
           onTap: onTabTapped,
+          type: BottomNavigationBarType.fixed,
           currentIndex: currentIndex,
           backgroundColor: AppColors.background100,
           unselectedLabelStyle: AppTextStyles.captionNormalMedium.copyWith(
@@ -59,6 +60,7 @@ class AppNavigationBar extends StatelessWidget {
             _buildNavItem(AppAssets.icons.home, 0, '홈'),
             _buildNavItem(AppAssets.icons.searchFilled, 1, '검색'),
             _buildNavItem(AppAssets.icons.user, 2, '마이'),
+            _buildNavItem(AppAssets.icons.timeCircle, 3, '시간'),
           ],
         ),
       ),
