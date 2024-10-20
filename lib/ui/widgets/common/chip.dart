@@ -3,11 +3,6 @@ import 'package:BabBBu/ui/theme/fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-enum AppChipSize {
-  medium,
-  large,
-}
-
 class AppChipProperties {
   final double chipHeight;
   final double iconSize;
@@ -23,29 +18,24 @@ class AppChipProperties {
     required this.iconSize,
   });
 
-  static AppChipProperties properties(AppChipSize size) {
-    switch (size) {
-      case AppChipSize.medium:
-        return const AppChipProperties(
-          verticalPadding: 8,
-          horizontalPadding: 14,
-          chipHeight: 40,
-          iconSize: 20,
-        );
-      case AppChipSize.large:
-        return const AppChipProperties(
-          verticalPadding: 8,
-          horizontalPadding: 18,
-          chipHeight: 44,
-          iconSize: 24,
-        );
-    }
-  }
+  static const AppChipProperties medium = AppChipProperties(
+    verticalPadding: 8,
+    horizontalPadding: 14,
+    chipHeight: 40,
+    iconSize: 20,
+  );
+
+  static const AppChipProperties large = AppChipProperties(
+    verticalPadding: 8,
+    horizontalPadding: 18,
+    chipHeight: 44,
+    iconSize: 24,
+  );
 }
 
 class AppChip extends StatefulWidget {
   final String text;
-  final AppChipSize size;
+  final AppChipProperties properties;
   final String? leftIcon, rightIcon;
   final VoidCallback? onPressed;
   final bool? isSelected; // null일 경우 내부 상태로 관리
@@ -53,7 +43,7 @@ class AppChip extends StatefulWidget {
   const AppChip({
     super.key,
     required this.text,
-    required this.size,
+    required this.properties,
     this.leftIcon,
     this.rightIcon,
     this.onPressed,
@@ -78,10 +68,8 @@ class _AppChipState extends State<AppChip> {
     bool isSelected =
         widget.isSelected ?? _internalIsSelected; // 외부 또는 내부 상태 사용
 
-    AppChipProperties properties = AppChipProperties.properties(widget.size);
-
     return SizedBox(
-      height: properties.chipHeight,
+      height: widget.properties.chipHeight,
       child: ActionChip(
         backgroundColor:
             isSelected ? AppColors.primaryOrange500 : AppColors.line50,
@@ -90,8 +78,8 @@ class _AppChipState extends State<AppChip> {
           borderRadius: BorderRadius.circular(24),
         ),
         padding: EdgeInsets.symmetric(
-          horizontal: properties.horizontalPadding,
-          vertical: properties.verticalPadding,
+          horizontal: widget.properties.horizontalPadding,
+          vertical: widget.properties.verticalPadding,
         ),
         onPressed: () {
           if (widget.isSelected == null) {
@@ -108,8 +96,8 @@ class _AppChipState extends State<AppChip> {
             if (widget.leftIcon != null) ...[
               SvgPicture.asset(
                 widget.leftIcon!,
-                width: properties.iconSize,
-                height: properties.iconSize,
+                width: widget.properties.iconSize,
+                height: widget.properties.iconSize,
                 colorFilter: ColorFilter.mode(
                   isSelected ? AppColors.white : AppColors.secondaryBlue600,
                   BlendMode.srcIn,
@@ -117,13 +105,14 @@ class _AppChipState extends State<AppChip> {
               ),
               SizedBox(width: 4),
             ],
-            Text(widget.text, style: _getTextStyle(widget.size, isSelected)),
+            Text(widget.text,
+                style: _getTextStyle(widget.properties, isSelected)),
             if (widget.rightIcon != null) ...[
               SizedBox(width: 4),
               SvgPicture.asset(
                 widget.rightIcon!,
-                width: properties.iconSize,
-                height: properties.iconSize,
+                width: widget.properties.iconSize,
+                height: widget.properties.iconSize,
                 colorFilter: ColorFilter.mode(
                   isSelected ? AppColors.white : AppColors.secondaryBlue600,
                   BlendMode.srcIn,
@@ -190,7 +179,7 @@ class _AppSelectChipState extends State<AppSelectChip> {
 
         return AppChip(
           text: widget.appChips[index].text,
-          size: widget.appChips[index].size,
+          properties: widget.appChips[index].properties,
           leftIcon: widget.appChips[index].leftIcon,
           rightIcon: widget.appChips[index].rightIcon,
           isSelected: isSelected,
@@ -227,13 +216,13 @@ class _AppSelectChipState extends State<AppSelectChip> {
   }
 }
 
-TextStyle _getTextStyle(AppChipSize size, bool isSelected) {
-  TextStyle baseStyle;
+TextStyle _getTextStyle(AppChipProperties properties, bool isSelected) {
+  TextStyle baseStyle = AppTextStyles.captionNormalSemibold;
 
-  switch (size) {
-    case AppChipSize.medium:
+  switch (properties) {
+    case AppChipProperties.medium:
       baseStyle = AppTextStyles.captionNormalSemibold;
-    case AppChipSize.large:
+    case AppChipProperties.large:
       baseStyle = AppTextStyles.labelNormalSemibold;
   }
 

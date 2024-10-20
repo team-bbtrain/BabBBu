@@ -30,17 +30,17 @@ class HomeScreen extends StatelessWidget {
               appChips: [
                 AppChip(
                   text: '뱅크',
-                  size: AppChipSize.medium,
+                  properties: AppChipProperties.medium,
                   leftIcon: AppAssets.icons.shop,
                 ),
                 AppChip(
                   text: '마켓',
-                  size: AppChipSize.medium,
+                  properties: AppChipProperties.medium,
                   leftIcon: AppAssets.icons.cart,
                 ),
                 AppChip(
                   text: '박스',
-                  size: AppChipSize.medium,
+                  properties: AppChipProperties.medium,
                   leftIcon: AppAssets.icons.box,
                 ),
               ],
@@ -48,7 +48,7 @@ class HomeScreen extends StatelessWidget {
             // 개별칩 사용법
             AppChip(
               text: '아침이에요!',
-              size: AppChipSize.large,
+              properties: AppChipProperties.large,
               leftIcon: AppAssets.icons.alarmClock,
             ),
             // 이미지 사용법
