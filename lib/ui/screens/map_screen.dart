@@ -1,5 +1,5 @@
 import 'package:BabBBu/ui/widgets/text_field/search_text_field.dart';
-import 'package:BabBBu/ui/widgets/text_field/text_field_height.dart';
+import 'package:BabBBu/ui/widgets/text_field/properties.dart';
 import 'package:flutter/material.dart';
 
 class MapScreen extends StatelessWidget {
@@ -16,7 +16,27 @@ class MapScreen extends StatelessWidget {
             children: [
               SearchTextField(
                 controller: TextEditingController(),
-                height: TextFieldHeight.lg,
+                properties: TextFieldProperties.lg,
+                onSearch: (query) {
+                  print('Search query: $query');
+                },
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              SearchTextField(
+                controller: TextEditingController(),
+                properties: TextFieldProperties.md,
+                onSearch: (query) {
+                  print('Search query: $query');
+                },
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              SearchTextField(
+                controller: TextEditingController(),
+                properties: TextFieldProperties.sm,
                 onSearch: (query) {
                   print('Search query: $query');
                 },

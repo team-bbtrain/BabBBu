@@ -8,7 +8,10 @@ class AppTheme {
     fillColor: AppColors.background200,
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12),
-      borderSide: BorderSide.none,
+      borderSide: BorderSide(
+        color: AppColors.text300,
+        width: 1,
+      ),
     ),
     hintStyle: AppTextStyles.body2NormalLight.copyWith(
       color: AppColors.text50,
