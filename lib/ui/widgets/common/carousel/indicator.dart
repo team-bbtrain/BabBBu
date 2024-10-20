@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 
 class AppIndicator extends StatelessWidget {
   final int currentIndex;
-  final int count;
+  final int indicatorCount;
   final Function(int) onDotClicked;
 
   const AppIndicator({
     super.key,
     required this.currentIndex,
-    required this.count,
+    required this.indicatorCount,
     required this.onDotClicked,
   });
 
@@ -17,7 +17,7 @@ class AppIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(count, (index) {
+      children: List.generate(indicatorCount, (index) {
         bool isSelected = currentIndex == index;
 
         return GestureDetector(

@@ -24,7 +24,7 @@ class AppCarouselState extends State<AppCarousel> {
       children: [
         AppIndicator(
           currentIndex: _currentIndex,
-          count: widget.imageUrls.length,
+          indicatorCount: widget.imageUrls.length,
           onDotClicked: (index) {
             _controller.animateToPage(index);
           },
