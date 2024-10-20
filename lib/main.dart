@@ -1,3 +1,4 @@
+import 'package:BabBBu/ui/widgets/common/navigation.dart';
 import 'package:flutter/material.dart';
 import 'ui/screens/home_screen.dart';
 import 'ui/screens/map_screen.dart';
@@ -7,6 +8,8 @@ import 'ui/theme/theme.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,6 +21,8 @@ class MyApp extends StatelessWidget {
 }
 
 class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
+
   @override
   _MainScreenState createState() => _MainScreenState();
 }
@@ -41,15 +46,11 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _children[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: onTabTapped,
-        currentIndex: _currentIndex,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.map), label: 'Map'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.settings), label: 'Settings'),
-        ],
+      bottomNavigationBar: SafeArea(
+        child: AppNavigationBar(
+          currentIndex: _currentIndex,
+          onTabTapped: onTabTapped,
+        ),
       ),
     );
   }

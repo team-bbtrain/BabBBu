@@ -1,4 +1,6 @@
 import 'package:BabBBu/ui/assets/assets.dart';
+import 'package:BabBBu/ui/widgets/common/chip.dart';
+import 'package:BabBBu/ui/widgets/common/marker.dart';
 import 'package:BabBBu/ui/theme/colors.dart';
 import 'package:BabBBu/ui/widgets/common/button/button.dart';
 import 'package:BabBBu/ui/widgets/common/button/filter_button.dart';
@@ -24,6 +26,19 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              AppMarker(
+                x: 10,
+                y: 0,
+                label: '동탄1동 푸드뱅크',
+                subLabel: '푸드뱅크',
+                icon: AppAssets.icons.shop20,
+              ),
+              //칩 사용법
+              AppChip(
+                text: '아침이에요!',
+                size: AppChipSize.large,
+                leftIcon: AppAssets.icons.alarmClock,
+              ),
               // 이미지 사용법
               // 2x, 3x 이미지는 준비만 해두면 플러터가 자동으로 디바이스의 해상도에 맞는 이미지를 사용
               Image.asset(
@@ -36,7 +51,7 @@ class HomeScreen extends StatelessWidget {
               // ⭐️ 아이콘 사용법
               // 크기 조절
               SvgPicture.asset(
-                AppAssets.icons.handEmoji,
+                AppAssets.icons.handEmoji14,
                 width: 50,
                 height: 50,
               ),
