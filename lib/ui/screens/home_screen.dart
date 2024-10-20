@@ -63,7 +63,7 @@ class HomeScreen extends StatelessWidget {
             // ⭐️ 아이콘 사용법
             // 크기 조절
             SvgPicture.asset(
-              AppAssets.icons.handEmoji,
+              AppAssets.icons.handEmoji14,
               width: 50,
               height: 50,
             ),
