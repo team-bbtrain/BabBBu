@@ -9,6 +9,9 @@ TextStyle getTextStyle(AppChipProperties properties, bool isSelected) {
   switch (properties) {
     case AppChipProperties.small:
       baseStyle = AppTextStyles.captionNormalSemibold;
+      return baseStyle.copyWith(
+        color: isSelected ? AppColors.primaryOrange500 : AppColors.text100,
+      );
     case AppChipProperties.medium:
       baseStyle = AppTextStyles.captionNormalSemibold;
     case AppChipProperties.large:
