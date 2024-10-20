@@ -8,7 +8,8 @@ class CustomCalendarWidget extends StatefulWidget {
   final ValueChanged<DateTime> onDateSelected;
   final DateTime initialDate;
 
-  CustomCalendarWidget({
+  const CustomCalendarWidget({
+    super.key,
     required this.onDateSelected,
     required this.initialDate,
   });
@@ -212,6 +213,7 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
               },
             ),
           ),
+          SizedBox(height: 16),
         ],
       ),
     );
