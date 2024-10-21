@@ -1,7 +1,9 @@
+import 'package:BabBBu/ui/widgets/common/navigation.dart';
 import 'package:flutter/material.dart';
 import 'ui/screens/home_screen.dart';
 import 'ui/screens/map_screen.dart';
 import 'ui/screens/settings_screen.dart';
+import 'ui/screens/expiration_date_page.dart';
 import 'ui/theme/theme.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
@@ -40,6 +42,7 @@ class _MainScreenState extends State<MainScreen> {
     HomeScreen(),
     MapScreen(),
     SettingsScreen(),
+    ExpirationDatePickerPage(),
   ];
 
   void onTabTapped(int index) {
@@ -52,15 +55,11 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _children[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: onTabTapped,
-        currentIndex: _currentIndex,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.map), label: 'Map'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.settings), label: 'Settings'),
-        ],
+      bottomNavigationBar: SafeArea(
+        child: AppNavigationBar(
+          currentIndex: _currentIndex,
+          onTabTapped: onTabTapped,
+        ),
       ),
     );
   }

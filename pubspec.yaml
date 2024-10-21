@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_svg: ^2.0.10+1
   flutter_launcher_icons: ^0.14.1
+  intl: ^0.19.0
 
 dev_dependencies:
   flutter_test:
@@ -101,6 +102,9 @@ flutter:
     - assets/icons/shop_20.svg
     - assets/icons/time_circle.svg
     - assets/icons/user.svg
+    - assets/icons/social_google.svg
+    - assets/icons/social_kakao.svg
+    - assets/icons/social_naver.svg
     # 이미지
     - assets/images/character.png
     - assets/images/logo.png
