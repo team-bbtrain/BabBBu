@@ -1,4 +1,6 @@
 import 'package:BabBBu/ui/assets/assets.dart';
+import 'package:BabBBu/ui/screens/guide_page/detail_benefit_page.dart';
+import 'package:BabBBu/ui/screens/home_screen.dart';
 import 'package:BabBBu/ui/theme/colors.dart';
 import 'package:BabBBu/ui/theme/fonts.dart';
 import 'package:BabBBu/ui/widgets/common/chip/chip.dart';
@@ -10,10 +12,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:BabBBu/ui/screens/guide_page/guide_page_textstyle.dart';
 
-enum ButtonType {
-  move,
-  popUp,
-  none,
+enum ScreenName {
+  donateLogic,
+  detailBenefit,
+  map,
+  main,
 }
 
 class ServiceGuidePage extends StatefulWidget {
@@ -27,6 +30,7 @@ class _ServiceGuidePageState extends State<ServiceGuidePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background50,
       appBar: AppBar(
         title: Text(
           '서비스 가이드',
@@ -45,12 +49,12 @@ class _ServiceGuidePageState extends State<ServiceGuidePage> {
         leading: IconButton(
           iconSize: 24,
           onPressed: () {
-            // 꺼지는 효과
+            _moveScreen(context, ScreenName.main);
           },
           icon: SvgPicture.asset(
             AppAssets.icons.closeLine,
             colorFilter: ColorFilter.mode(
-              Color(0xff292929), // TODO: 이거 바뀌는지 확인해서 앱컬러스 넣어주기
+              AppColors.text400,
               BlendMode.srcIn,
             ),
           ),
@@ -165,10 +169,11 @@ class _ServiceGuidePageState extends State<ServiceGuidePage> {
                       height: 32,
                     ),
                     _getQuestionBox(
+                      context,
                       '구체적으로 무엇을 기부할 수 있나요?',
                       '이용자에게 안전하게 제공할 수 있는 대부분의 식품과\n생활용품을 기부받아요.\n단, 유통기한이나 신선도, 사용기한에 따라\n제약이 있을 수 있어요.',
-                      ButtonType.move,
                       '내 물건 기부 가능한지 확인하기',
+                      ScreenName.donateLogic,
                     ),
                     SizedBox(
                       height: 24,
@@ -184,27 +189,29 @@ class _ServiceGuidePageState extends State<ServiceGuidePage> {
                       height: 52,
                     ),
                     _getQuestionBox(
+                      context,
                       '뉴스에 보면 박스 단위로 기부하던데,\n낱개도 기부가 가능한가요?',
                       '당연하죠! 작은 단위의 기부물품이 모여\n누군가의 소중한 한 끼 식사가 될 수 있답니다.',
-                      ButtonType.none,
                     ),
                     SizedBox(
                       height: 52,
                     ),
                     _getQuestionBox(
+                      context,
                       '어떤 혜택이 있나요?',
                       '푸드뱅크/푸드마켓 기부 시 최대 100%까지\n세제 혜택을 받으실 수 있어요.',
-                      ButtonType.popUp,
                       '자세히 보기',
+                      ScreenName.detailBenefit,
                     ),
                     SizedBox(
                       height: 52,
                     ),
                     _getQuestionBox(
+                      context,
                       '어디에 기부를 하면 되나요?',
                       '어려운 이웃에게 기부 물품을 전달하는 푸드뱅크와\n저소득층이 직접 매장에 방문하여\n기부물품을 구입하는 방식의 푸드마켓이\n전국 곳곳에서 온정을 기다리고 있어요!',
-                      ButtonType.move,
                       '내 근처 기부처 찾아보기',
+                      ScreenName.map,
                     ),
                     SizedBox(
                       height: 68,
@@ -220,8 +227,13 @@ class _ServiceGuidePageState extends State<ServiceGuidePage> {
   }
 }
 
-Widget _getQuestionBox(String title, String content, ButtonType type,
-    [String? buttonText]) {
+Widget _getQuestionBox(
+  BuildContext context,
+  title,
+  String content, [
+  String? buttonText,
+  ScreenName? destination,
+]) {
   return Column(
     children: [
       Row(
@@ -260,30 +272,36 @@ Widget _getQuestionBox(String title, String content, ButtonType type,
                   content,
                   style: GuidePageTextStyle.bodyTextStyle,
                 ),
-                SizedBox(
-                  height: 16,
-                ),
-                if (type != ButtonType.none)
-                  ElevatedButton(
-                    onPressed: () {
-                      if (type == ButtonType.move) {
-                      } else if (type == ButtonType.popUp) {}
-                    },
-                    style: ElevatedButton.styleFrom(
-                      elevation: 0,
-                      backgroundColor: AppColors.secondaryBlue100,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 10,
-                        vertical: 6,
+                if (buttonText != null)
+                  Column(
+                    children: [
+                      SizedBox(
+                        height: 16,
                       ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(6),
+                      ElevatedButton(
+                        onPressed: () {
+                          _moveScreen(
+                            context,
+                            destination!,
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          elevation: 0,
+                          backgroundColor: AppColors.secondaryBlue100,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 10,
+                            vertical: 6,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                        ),
+                        child: Text(
+                          buttonText,
+                          style: GuidePageTextStyle.buttonTextStyle,
+                        ),
                       ),
-                    ),
-                    child: Text(
-                      buttonText ?? '',
-                      style: GuidePageTextStyle.buttonTextStyle,
-                    ),
+                    ],
                   ),
               ],
             ),
@@ -294,6 +312,32 @@ Widget _getQuestionBox(String title, String content, ButtonType type,
   );
 }
 
-void _moveScreen() {}
-
-void _popUpScreen() {}
+void _moveScreen(BuildContext context, ScreenName screenName) {
+  switch (screenName) {
+    case ScreenName.donateLogic:
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => HomeScreen()), // TODO: 기부로직 화면으로 연결
+      );
+      break;
+    case ScreenName.detailBenefit:
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => DetailBenefitPage()),
+      );
+      break;
+    case ScreenName.map:
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => HomeScreen()), // TODO: 기부로직 화면으로 연결
+      );
+      break;
+    case ScreenName.main:
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => HomeScreen()),
+      );
+  }
+}
