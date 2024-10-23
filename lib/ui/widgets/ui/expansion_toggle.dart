@@ -28,6 +28,7 @@ class _AppExpansionTileState extends State<AppExpansionTile> {
     return Column(
       children: [
         ListTile(
+          contentPadding: EdgeInsets.zero,
           title: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
