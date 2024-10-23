@@ -124,8 +124,10 @@ class MarkerPainter extends CustomPainter {
 
     // 겹치는 부분
     final Path bondingPath = Path()
-      ..moveTo(squareWidth / 2 - triangleWidth / 2, squareHeight) // 삼각형 왼쪽 점
-      ..lineTo(squareWidth / 2 + triangleWidth / 2, squareHeight); // 삼각형 오른쪽 점
+      ..moveTo(squareWidth / 2 - triangleWidth / 2 + border / 2,
+          squareHeight) // 삼각형 왼쪽 점
+      ..lineTo(squareWidth / 2 + triangleWidth / 2 - border / 2,
+          squareHeight); // 삼각형 오른쪽 점
 
     // 테두리 추가
     final Paint borderPaint = Paint()
