@@ -1,4 +1,5 @@
 import 'package:BabBBu/ui/assets/assets.dart';
+import 'package:BabBBu/ui/etc/direction.dart';
 import 'package:BabBBu/ui/theme/colors.dart';
 import 'package:BabBBu/ui/theme/fonts.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,7 @@ class _AppExpansionTileState extends State<AppExpansionTile> {
             children: [
               isExpanded
                   ? Transform.rotate(
-                      angle: 3.14,
+                      angle: Direction.down,
                       child: SizedBox(
                         height: 24,
                         width: 24,
@@ -48,7 +49,7 @@ class _AppExpansionTileState extends State<AppExpansionTile> {
                       ),
                     )
                   : Transform.rotate(
-                      angle: 3.14 / 2,
+                      angle: Direction.right,
                       child: SizedBox(
                         height: 24,
                         width: 24,
