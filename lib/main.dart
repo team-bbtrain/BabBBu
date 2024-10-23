@@ -1,4 +1,4 @@
-import 'package:BabBBu/ui/screens/guide_page.dart';
+import 'package:BabBBu/ui/screens/guide_page/guide_page.dart';
 import 'package:BabBBu/ui/widgets/common/navigation.dart';
 import 'package:flutter/material.dart';
 import 'ui/screens/home_screen.dart';
