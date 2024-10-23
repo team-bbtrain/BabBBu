@@ -36,9 +36,6 @@ class HomeScreen extends StatelessWidget {
                 icon: AppAssets.icons.shop20,
               ),
               AppSelectChip(
-                chipBarWidth: 300,
-                chipBarHeight: 100,
-                chipBarPadding: 10,
                 chipBarSpace: 8,
                 multipleSelection: false, // 칩 여러 개 선택 가능 여부
                 onMultipleSelectionChanged: (value) =>
