@@ -19,6 +19,7 @@ class AppTheme {
   );
 
   static ThemeData lightTheme = ThemeData(
+    scaffoldBackgroundColor: AppColors.background50,
     useMaterial3: true,
     brightness: Brightness.light,
     colorScheme: AppColors.lightColorScheme,
