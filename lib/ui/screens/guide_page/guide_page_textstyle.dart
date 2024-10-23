@@ -26,4 +26,12 @@ class GuidePageTextStyle {
       AppTextStyles.body2ReadingSemibold.copyWith(
     color: AppColors.text300,
   );
+  static TextStyle detailTitleTextStyle =
+      AppTextStyles.heading2Semibold.copyWith(
+    color: AppColors.text400,
+  );
+  static TextStyle detailbodyTextStyle =
+      AppTextStyles.labelReadingRegular.copyWith(
+    color: AppColors.text200,
+  );
 }
