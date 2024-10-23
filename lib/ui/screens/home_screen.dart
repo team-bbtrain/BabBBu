@@ -1,4 +1,5 @@
 import 'package:BabBBu/ui/assets/assets.dart';
+import 'package:BabBBu/ui/widgets/common/carousel/carousel.dart';
 import 'package:BabBBu/ui/widgets/common/chip/chip.dart';
 import 'package:BabBBu/ui/widgets/common/chip/chip_properties.dart';
 import 'package:BabBBu/ui/widgets/common/chip/select_chip.dart';
@@ -18,6 +19,10 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final List<String> imageUrls = [
+      AppAssets.images.logo,
+      AppAssets.images.character,
+    ];
 
     return Scaffold(
       appBar: AppBar(
@@ -66,6 +71,14 @@ class HomeScreen extends StatelessWidget {
                 text: '아침이에요!',
                 properties: AppChipProperties.large,
                 leftIcon: AppAssets.icons.alarmClock,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  color: AppColors.line200,
+                ),
+                child: AppCarousel(
+                  imageUrls: imageUrls,
+                ),
               ),
               // 이미지 사용법
               // 2x, 3x 이미지는 준비만 해두면 플러터가 자동으로 디바이스의 해상도에 맞는 이미지를 사용
