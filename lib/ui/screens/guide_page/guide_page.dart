@@ -10,6 +10,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:BabBBu/ui/screens/guide_page/guide_page_textstyle.dart';
 
+enum ButtonType {
+  move,
+  popUp,
+  none,
+}
+
 class ServiceGuidePage extends StatefulWidget {
   const ServiceGuidePage({super.key});
 
@@ -158,66 +164,11 @@ class _ServiceGuidePageState extends State<ServiceGuidePage> {
                     SizedBox(
                       height: 32,
                     ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Q',
-                          style: GuidePageTextStyle.questionIconTextStyle,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          '구체적으로 무엇을 기부할 수 있나요?',
-                          style: GuidePageTextStyle.questionTextStyle,
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 16,
-                    ),
-                    IntrinsicHeight(
-                      child: Row(
-                        children: [
-                          Container(
-                            width: 4,
-                            color: AppColors.secondaryBlue100,
-                          ),
-                          SizedBox(
-                            width: 16,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '이용자에게 안전하게 제공할 수 있는 대부분의 식품과\n생활용품을 기부받아요.\n단, 유통기한이나 신선도, 사용기한에 따라\n제약이 있을 수 있어요.',
-                                style: GuidePageTextStyle.bodyTextStyle,
-                              ),
-                              SizedBox(
-                                height: 16,
-                              ),
-                              ElevatedButton(
-                                onPressed: () {}, // TODO: 기부로직 페이지로 연결
-                                style: ElevatedButton.styleFrom(
-                                  elevation: 0,
-                                  backgroundColor: AppColors.secondaryBlue100,
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 10,
-                                    vertical: 6,
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(6),
-                                  ),
-                                ),
-
-                                child: Text('내 물건 기부 가능한지 확인하기',
-                                    style: GuidePageTextStyle.buttonTextStyle),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+                    _getQuestionBox(
+                      '구체적으로 무엇을 기부할 수 있나요?',
+                      '이용자에게 안전하게 제공할 수 있는 대부분의 식품과\n생활용품을 기부받아요.\n단, 유통기한이나 신선도, 사용기한에 따라\n제약이 있을 수 있어요.',
+                      ButtonType.move,
+                      '내 물건 기부 가능한지 확인하기',
                     ),
                     SizedBox(
                       height: 24,
@@ -232,133 +183,31 @@ class _ServiceGuidePageState extends State<ServiceGuidePage> {
                     SizedBox(
                       height: 52,
                     ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Q',
-                          style: GuidePageTextStyle.questionIconTextStyle,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          '뉴스에 보면 박스 단위로 기부하던데,\n낱개도 기부가 가능한가요?',
-                          style: GuidePageTextStyle.questionTextStyle,
-                        ),
-                      ],
+                    _getQuestionBox(
+                      '뉴스에 보면 박스 단위로 기부하던데,\n낱개도 기부가 가능한가요?',
+                      '당연하죠! 작은 단위의 기부물품이 모여\n누군가의 소중한 한 끼 식사가 될 수 있답니다.',
+                      ButtonType.none,
                     ),
                     SizedBox(
-                      height: 16,
+                      height: 52,
                     ),
-                    IntrinsicHeight(
-                      child: Row(
-                        children: [
-                          Container(
-                            width: 4,
-                            color: AppColors.secondaryBlue100,
-                          ),
-                          SizedBox(
-                            width: 16,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '당연하죠! 작은 단위의 기부물품이 모여\n누군가의 소중한 한 끼 식사가 될 수 있답니다.',
-                                style: GuidePageTextStyle.bodyTextStyle,
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+                    _getQuestionBox(
+                      '어떤 혜택이 있나요?',
+                      '푸드뱅크/푸드마켓 기부 시 최대 100%까지\n세제 혜택을 받으실 수 있어요.',
+                      ButtonType.popUp,
+                      '자세히 보기',
                     ),
                     SizedBox(
-                      height: 54,
+                      height: 52,
                     ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Q',
-                          style: GuidePageTextStyle.questionIconTextStyle,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          '어떤 혜택이 있나요?',
-                          style: GuidePageTextStyle.questionTextStyle,
-                        ),
-                      ],
+                    _getQuestionBox(
+                      '어디에 기부를 하면 되나요?',
+                      '어려운 이웃에게 기부 물품을 전달하는 푸드뱅크와\n저소득층이 직접 매장에 방문하여\n기부물품을 구입하는 방식의 푸드마켓이\n전국 곳곳에서 온정을 기다리고 있어요!',
+                      ButtonType.move,
+                      '내 근처 기부처 찾아보기',
                     ),
                     SizedBox(
-                      height: 16,
-                    ),
-                    IntrinsicHeight(
-                      child: Row(
-                        children: [
-                          Container(
-                            width: 4,
-                            color: AppColors.secondaryBlue100,
-                          ),
-                          SizedBox(
-                            width: 16,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '푸드뱅크/푸드마켓 기부 시 최대 100%까지\n세제 혜택을 받으실 수 있어요.',
-                                style: GuidePageTextStyle.bodyTextStyle,
-                              ),
-                              // TODO: 상세 혜택 페이지로 가는 버튼
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Q',
-                          style: GuidePageTextStyle.questionIconTextStyle,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          '어디에 기부를 하면 되나요?',
-                          style: GuidePageTextStyle.questionTextStyle,
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 16,
-                    ),
-                    IntrinsicHeight(
-                      child: Row(
-                        children: [
-                          Container(
-                            width: 4,
-                            color: AppColors.secondaryBlue100,
-                          ),
-                          SizedBox(
-                            width: 16,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '어려운 이웃에게 기부 물품을 전달하는 푸드뱅크와\n저소득층이 직접 매장에 방문하여\n기부물품을 구입하는 방식의 푸드마켓이\n전국 곳곳에서 온정을 기다리고 있어요!',
-                                style: GuidePageTextStyle.bodyTextStyle,
-                              ),
-                              // TODO: 맵 보는 화면으로 연결
-                            ],
-                          ),
-                        ],
-                      ),
+                      height: 68,
                     ),
                   ],
                 ),
@@ -370,3 +219,81 @@ class _ServiceGuidePageState extends State<ServiceGuidePage> {
     );
   }
 }
+
+Widget _getQuestionBox(String title, String content, ButtonType type,
+    [String? buttonText]) {
+  return Column(
+    children: [
+      Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Q',
+            style: GuidePageTextStyle.questionIconTextStyle,
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          Text(
+            title,
+            style: GuidePageTextStyle.questionTextStyle,
+          ),
+        ],
+      ),
+      SizedBox(
+        height: 16,
+      ),
+      IntrinsicHeight(
+        child: Row(
+          children: [
+            Container(
+              width: 4,
+              color: AppColors.secondaryBlue100,
+            ),
+            SizedBox(
+              width: 16,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  content,
+                  style: GuidePageTextStyle.bodyTextStyle,
+                ),
+                SizedBox(
+                  height: 16,
+                ),
+                if (type != ButtonType.none)
+                  ElevatedButton(
+                    onPressed: () {
+                      if (type == ButtonType.move) {
+                      } else if (type == ButtonType.popUp) {}
+                    },
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      backgroundColor: AppColors.secondaryBlue100,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 6,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                    ),
+                    child: Text(
+                      buttonText ?? '',
+                      style: GuidePageTextStyle.buttonTextStyle,
+                    ),
+                  ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    ],
+  );
+}
+
+void _moveScreen() {}
+
+void _popUpScreen() {}
