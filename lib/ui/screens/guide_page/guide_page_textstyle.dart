@@ -6,7 +6,7 @@ class GuidePageTextStyle {
   static TextStyle titleTextStyle = AppTextStyles.title2Bold.copyWith(
     color: AppColors.text400,
   );
-  static TextStyle bodyTextStyle = AppTextStyles.body2NormalMedium.copyWith(
+  static TextStyle bodyTextStyle = AppTextStyles.body2ReadingMedium.copyWith(
     color: AppColors.text200,
   );
   static TextStyle textButtonTextStyle =

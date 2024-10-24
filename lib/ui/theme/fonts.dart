@@ -74,17 +74,17 @@ class AppTextStyles {
   static TextStyle body1NormalLight =
       _baseTextStyle(fontSize: 16, height: 20, fontWeight: FontWeight.w300);
 
-  // Body 1 Reading (16px / 22px)
+  // Body 1 Reading (16px / 26px)
   static TextStyle body1ReadingBold =
-      _baseTextStyle(fontSize: 16, height: 22, fontWeight: FontWeight.w700);
+      _baseTextStyle(fontSize: 16, height: 26, fontWeight: FontWeight.w700);
   static TextStyle body1ReadingSemibold =
-      _baseTextStyle(fontSize: 16, height: 22, fontWeight: FontWeight.w600);
+      _baseTextStyle(fontSize: 16, height: 26, fontWeight: FontWeight.w600);
   static TextStyle body1ReadingMedium =
-      _baseTextStyle(fontSize: 16, height: 22, fontWeight: FontWeight.w500);
+      _baseTextStyle(fontSize: 16, height: 26, fontWeight: FontWeight.w500);
   static TextStyle body1ReadingRegular =
-      _baseTextStyle(fontSize: 16, height: 22, fontWeight: FontWeight.w400);
+      _baseTextStyle(fontSize: 16, height: 26, fontWeight: FontWeight.w400);
   static TextStyle body1ReadingLight =
-      _baseTextStyle(fontSize: 16, height: 22, fontWeight: FontWeight.w300);
+      _baseTextStyle(fontSize: 16, height: 26, fontWeight: FontWeight.w300);
 
   // Body 2 Normal (14px / 20px)
   static TextStyle body2NormalBold =
@@ -98,17 +98,17 @@ class AppTextStyles {
   static TextStyle body2NormalLight =
       _baseTextStyle(fontSize: 14, height: 20, fontWeight: FontWeight.w300);
 
-  // Body 2 Reading (14px / 22px)
+  // Body 2 Reading (14px / 24px)
   static TextStyle body2ReadingBold =
-      _baseTextStyle(fontSize: 14, height: 22, fontWeight: FontWeight.w700);
+      _baseTextStyle(fontSize: 14, height: 24, fontWeight: FontWeight.w700);
   static TextStyle body2ReadingSemibold =
-      _baseTextStyle(fontSize: 14, height: 22, fontWeight: FontWeight.w600);
+      _baseTextStyle(fontSize: 14, height: 24, fontWeight: FontWeight.w600);
   static TextStyle body2ReadingMedium =
-      _baseTextStyle(fontSize: 14, height: 22, fontWeight: FontWeight.w500);
+      _baseTextStyle(fontSize: 14, height: 24, fontWeight: FontWeight.w500);
   static TextStyle body2ReadingRegular =
-      _baseTextStyle(fontSize: 14, height: 22, fontWeight: FontWeight.w400);
+      _baseTextStyle(fontSize: 14, height: 24, fontWeight: FontWeight.w400);
   static TextStyle body2ReadingLight =
-      _baseTextStyle(fontSize: 14, height: 22, fontWeight: FontWeight.w300);
+      _baseTextStyle(fontSize: 14, height: 24, fontWeight: FontWeight.w300);
 
   // Label Normal (13px / 18px)
   static TextStyle labelNormalBold =
