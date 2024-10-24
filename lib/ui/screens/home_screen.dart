@@ -1,6 +1,7 @@
 import 'package:BabBBu/ui/assets/assets.dart';
 import 'package:BabBBu/ui/widgets/common/carousel/carousel.dart';
 import 'package:BabBBu/ui/widgets/common/chip/chip.dart';
+import 'package:BabBBu/ui/widgets/common/chip/chip_filter.dart';
 import 'package:BabBBu/ui/widgets/common/chip/chip_properties.dart';
 import 'package:BabBBu/ui/widgets/common/chip/select_chip.dart';
 import 'package:BabBBu/ui/widgets/common/marker.dart';
@@ -33,6 +34,12 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              AppChipFilter(
+                text: 'Label',
+                properties: AppChipProperties.small,
+                onPressed: () {},
+                isSelected: true,
+              ),
               AppMarker(
                 x: 10,
                 y: 0,
@@ -71,6 +78,7 @@ class HomeScreen extends StatelessWidget {
                 text: '아침이에요!',
                 properties: AppChipProperties.large,
                 leftIcon: AppAssets.icons.alarmClock,
+                onPressed: () {}, // isSelected 속성 변경 시 색상 토글
               ),
               Container(
                 decoration: BoxDecoration(
