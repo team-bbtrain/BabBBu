@@ -1,4 +1,4 @@
-import 'package:BabBBu/ui/screens/terms_of_use_page.dart';
+import 'package:BabBBu/ui/screens/sign_up_page/agreement_page.dart';
 import 'package:BabBBu/ui/widgets/common/navigation.dart';
 import 'package:flutter/material.dart';
 import 'ui/screens/home_screen.dart';
@@ -37,7 +37,7 @@ class _MainScreenState extends State<MainScreen> {
     MapScreen(),
     SettingsScreen(),
     ExpirationDatePickerPage(),
-    TermsOfUsePage(),
+    AgreementPage(),
   ];
 
   void onTabTapped(int index) {

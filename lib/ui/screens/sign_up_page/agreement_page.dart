@@ -1,19 +1,29 @@
 import 'package:BabBBu/main.dart';
 import 'package:BabBBu/ui/assets/assets.dart';
+import 'package:BabBBu/ui/screens/home_screen.dart';
+import 'package:BabBBu/ui/screens/sign_up_page/ad_page.dart';
+import 'package:BabBBu/ui/screens/sign_up_page/privacy_page.dart';
+import 'package:BabBBu/ui/screens/sign_up_page/terms_of_use_page.dart';
 import 'package:BabBBu/ui/theme/colors.dart';
 import 'package:BabBBu/ui/theme/fonts.dart';
 import 'package:BabBBu/ui/widgets/common/button/button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class TermsOfUsePage extends StatefulWidget {
-  const TermsOfUsePage({super.key});
-
-  @override
-  _TermsOfUsePageState createState() => _TermsOfUsePageState();
+enum ScreenName {
+  termsOfUse,
+  privacy,
+  ad,
 }
 
-class _TermsOfUsePageState extends State<TermsOfUsePage> {
+class AgreementPage extends StatefulWidget {
+  const AgreementPage({super.key});
+
+  @override
+  _AgreementPageState createState() => _AgreementPageState();
+}
+
+class _AgreementPageState extends State<AgreementPage> {
   AppButtonState _buttonState = AppButtonState.defaultState;
   bool allChecked = false;
   bool serviceAgreement = false;
@@ -104,12 +114,7 @@ class _TermsOfUsePageState extends State<TermsOfUsePage> {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => MainScreen(),
-                        ),
-                      );
+                      _moveScreen(context, ScreenName.termsOfUse);
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -137,12 +142,7 @@ class _TermsOfUsePageState extends State<TermsOfUsePage> {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => MainScreen(),
-                        ),
-                      );
+                      _moveScreen(context, ScreenName.privacy);
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -169,12 +169,7 @@ class _TermsOfUsePageState extends State<TermsOfUsePage> {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => MainScreen(),
-                        ),
-                      );
+                      _moveScreen(context, ScreenName.ad);
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -224,5 +219,28 @@ class _TermsOfUsePageState extends State<TermsOfUsePage> {
         _buttonState = AppButtonState.defaultState;
       }
     });
+  }
+}
+
+void _moveScreen(BuildContext context, ScreenName screenName) {
+  switch (screenName) {
+    case ScreenName.termsOfUse:
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => TermsOfUsePage()),
+      );
+      break;
+    case ScreenName.privacy:
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => PrivacyPage()),
+      );
+      break;
+    case ScreenName.ad:
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => AdPage()),
+      );
+      break;
   }
 }
