@@ -87,17 +87,35 @@ class _AgreementPageState extends State<AgreementPage> {
             SizedBox(
               height: 32,
             ),
-            CheckboxListTile(
-              title: Text('전체 동의'),
-              value: allChecked,
-              onChanged: (value) {
-                setState(() {
-                  allChecked = value!;
-                  serviceAgreement = value;
-                  privacyAgreement = value;
-                  adAgreement = value;
-                });
-              },
+            Row(
+              children: [
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      _moveScreen(context, ScreenName.termsOfUse);
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('전체 동의'),
+                      ],
+                    ),
+                  ),
+                ),
+                Checkbox(
+                  value: allChecked,
+                  onChanged: (value) {
+                    setState(() {
+                      allChecked = value!;
+                      serviceAgreement = value;
+                      privacyAgreement = value;
+                      adAgreement = value;
+                      updateAllChecked();
+                      updateButtonState();
+                    });
+                  },
+                ),
+              ],
             ),
             Row(
               children: [
