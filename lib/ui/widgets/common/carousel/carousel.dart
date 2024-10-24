@@ -4,10 +4,12 @@ import 'package:carousel_slider/carousel_slider.dart';
 
 class AppCarousel extends StatefulWidget {
   final List<String> imageUrls;
+  final List<Widget>? textBox;
 
   const AppCarousel({
     super.key,
     required this.imageUrls,
+    this.textBox,
   });
 
   @override
@@ -22,6 +24,14 @@ class AppCarouselState extends State<AppCarousel> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        widget.textBox?[_currentIndex] != null
+            ? widget.textBox![_currentIndex]
+            : SizedBox(),
+        widget.textBox?[_currentIndex] != null
+            ? SizedBox(
+                height: 26,
+              )
+            : SizedBox(),
         AppIndicator(
           currentIndex: _currentIndex,
           indicatorCount: widget.imageUrls.length,
