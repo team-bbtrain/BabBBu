@@ -1,3 +1,4 @@
+import 'package:BabBBu/main.dart';
 import 'package:BabBBu/ui/assets/assets.dart';
 import 'package:BabBBu/ui/theme/colors.dart';
 import 'package:BabBBu/ui/theme/fonts.dart';
@@ -21,23 +22,20 @@ class _TermsOfUsePageState extends State<TermsOfUsePage> {
 
   @override
   Widget build(BuildContext context) {
-    Color textColor = Color(0xff3D3D3D);
     return Scaffold(
       appBar: AppBar(
-        // TODO: 앱바가 은근히~ 길어서 공통 위젯으로 빼도 괜찮을 것 같다! 의견 물어보고 진행해보면 좋을듯
         title: Text(
           '회원가입',
           style: AppTextStyles.body1NormalSemibold.copyWith(
-            color: textColor,
+            color: AppColors.text400,
           ),
         ),
         centerTitle: true,
         backgroundColor: AppColors.background50,
-
         leading: IconButton(
           iconSize: 24,
           onPressed: () {
-            // TODO: 온보딩 화면 생기면, 여기로 다시 돌아가도록 해주자! (뒤로가기 버튼)
+            // Navigator.pop(context); TODO: 온보딩 화면 생긴 이후에 주석 해제
           },
           icon: Transform.rotate(
             angle: 270 * 3.14 / 180,
@@ -64,7 +62,7 @@ class _TermsOfUsePageState extends State<TermsOfUsePage> {
             Text(
               '밥뿌에 오신 것을\n환영합니다!',
               style: AppTextStyles.title1Semibold.copyWith(
-                color: textColor,
+                color: AppColors.text300,
               ),
             ),
             SizedBox(
@@ -91,47 +89,106 @@ class _TermsOfUsePageState extends State<TermsOfUsePage> {
                 });
               },
             ),
-            Divider(),
-            CheckboxListTile(
-              title: Text('[필수] 서비스 이용약관'),
-              value: serviceAgreement,
-              onChanged: (value) {
-                setState(() {
-                  serviceAgreement = value!;
-                  updateAllChecked();
-                  updateButtonState();
-                });
-              },
-              controlAffinity: ListTileControlAffinity.leading,
-              secondary: Icon(Icons.arrow_forward_ios),
+            Row(
+              children: [
+                Checkbox(
+                  value: serviceAgreement,
+                  onChanged: (value) {
+                    setState(() {
+                      serviceAgreement = value!;
+                      updateAllChecked();
+                      updateButtonState();
+                    });
+                  },
+                ),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MainScreen(),
+                        ),
+                      );
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('[필수] 서비스 이용약관'),
+                        Icon(Icons.arrow_forward_ios),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
-            CheckboxListTile(
-              title: Text('[필수] 개인정보 수집 · 이용 동의'),
-              value: privacyAgreement,
-              onChanged: (value) {
-                setState(() {
-                  privacyAgreement = value!;
-                  updateAllChecked();
-                  updateButtonState();
-                });
-              },
-              controlAffinity: ListTileControlAffinity.leading,
-              secondary: Icon(Icons.arrow_forward_ios),
+            Row(
+              children: [
+                Checkbox(
+                  value: privacyAgreement,
+                  onChanged: (value) {
+                    setState(() {
+                      privacyAgreement = value!;
+                      updateAllChecked();
+                      updateButtonState();
+                    });
+                  },
+                ),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MainScreen(),
+                        ),
+                      );
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('[필수] 개인정보 수집 · 이용 동의'),
+                        Icon(Icons.arrow_forward_ios),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
-            CheckboxListTile(
-              title: Text('[선택] 맞춤형 광고 및 개인정보 제공 동의'),
-              value: adAgreement,
-              onChanged: (value) {
-                setState(() {
-                  adAgreement = value!;
-                  updateAllChecked();
-                });
-              },
-              controlAffinity: ListTileControlAffinity.leading,
-              secondary: Icon(Icons.arrow_forward_ios),
+            Row(
+              children: [
+                Checkbox(
+                  value: adAgreement,
+                  onChanged: (value) {
+                    setState(() {
+                      adAgreement = value!;
+                      updateAllChecked();
+                    });
+                  },
+                ),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MainScreen(),
+                        ),
+                      );
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('[선택] 맞춤형 광고 및 개인정보 제공 동의'),
+                        Icon(Icons.arrow_forward_ios),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
             SizedBox(
-              height: 100, // 238임
+              height: 100, // TODO: NavigationBar 없애고 238로 수정해야함
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
