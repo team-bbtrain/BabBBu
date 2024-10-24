@@ -95,6 +95,7 @@ class _ServiceGuidePageState extends State<ServiceGuidePage> {
                 ),
               ),
             ),
+
             Image.asset(
               AppAssets.images.serviceGuide,
               fit: BoxFit.cover,
@@ -115,9 +116,11 @@ class _ServiceGuidePageState extends State<ServiceGuidePage> {
         Align(
           alignment: Alignment.centerLeft,
           child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20,
-              vertical: 40,
+            padding: const EdgeInsets.only(
+              right: 20,
+              left: 20,
+              top: 72,
+              bottom: 56,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -127,7 +130,7 @@ class _ServiceGuidePageState extends State<ServiceGuidePage> {
                   style: GuidePageTextStyle.titleTextStyle,
                 ),
                 SizedBox(
-                  height: 32,
+                  height: 40,
                 ),
                 Text(
                   '푸드뱅크는 식품 및 생활용품을 기부받아\n결식아동, 독거노인 등 소외 계층에게\n지원하는 나눔제도에요.',
@@ -141,7 +144,7 @@ class _ServiceGuidePageState extends State<ServiceGuidePage> {
                   style: GuidePageTextStyle.bodyTextStyle,
                 ),
                 SizedBox(
-                  height: 24,
+                  height: 48,
                 ),
                 TextButton(
                   onPressed: () async {
@@ -173,9 +176,10 @@ class _ServiceGuidePageState extends State<ServiceGuidePage> {
         Align(
           alignment: Alignment.centerLeft,
           child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20,
-              vertical: 40,
+            padding: const EdgeInsets.only(
+              left: 20,
+              top: 64,
+              bottom: 128,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -205,7 +209,7 @@ class _ServiceGuidePageState extends State<ServiceGuidePage> {
                   content: '얘도 내용이 있겠쥬?',
                 ),
                 SizedBox(
-                  height: 52,
+                  height: 56,
                 ),
                 _getQuestionBox(
                   context,
@@ -213,7 +217,7 @@ class _ServiceGuidePageState extends State<ServiceGuidePage> {
                   '당연하죠! 작은 단위의 기부물품이 모여\n누군가의 소중한 한 끼 식사가 될 수 있답니다.',
                 ),
                 SizedBox(
-                  height: 52,
+                  height: 56,
                 ),
                 _getQuestionBox(
                   context,
@@ -223,7 +227,7 @@ class _ServiceGuidePageState extends State<ServiceGuidePage> {
                   ScreenName.detailBenefit,
                 ),
                 SizedBox(
-                  height: 52,
+                  height: 56,
                 ),
                 _getQuestionBox(
                   context,
@@ -231,9 +235,6 @@ class _ServiceGuidePageState extends State<ServiceGuidePage> {
                   '어려운 이웃에게 기부 물품을 전달하는 푸드뱅크와\n저소득층이 직접 매장에 방문하여\n기부물품을 구입하는 방식의 푸드마켓이\n전국 곳곳에서 온정을 기다리고 있어요!',
                   '내 근처 기부처 찾아보기',
                   ScreenName.map,
-                ),
-                SizedBox(
-                  height: 68,
                 ),
               ],
             ),
@@ -356,7 +357,7 @@ Widget _getQuestionBox(
         ],
       ),
       SizedBox(
-        height: 16,
+        height: 24,
       ),
       IntrinsicHeight(
         child: Row(
@@ -373,13 +374,13 @@ Widget _getQuestionBox(
               children: [
                 Text(
                   content,
-                  style: GuidePageTextStyle.bodyTextStyle,
+                  style: GuidePageTextStyle.questionAnswerTextStyle,
                 ),
                 if (buttonText != null)
                   Column(
                     children: [
                       SizedBox(
-                        height: 16,
+                        height: 24,
                       ),
                       ElevatedButton(
                         onPressed: () {

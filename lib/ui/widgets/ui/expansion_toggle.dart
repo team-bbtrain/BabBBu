@@ -67,7 +67,7 @@ class _AppExpansionTileState extends State<AppExpansionTile> {
                 children: [
                   Text(
                     widget.title,
-                    style: AppTextStyles.body2NormalMedium.copyWith(
+                    style: AppTextStyles.body1NormalMedium.copyWith(
                       color: AppColors.text300,
                     ),
                   ),
