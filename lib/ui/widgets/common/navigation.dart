@@ -61,6 +61,7 @@ class AppNavigationBar extends StatelessWidget {
             _buildNavItem(AppAssets.icons.searchFilled, 1, '검색'),
             _buildNavItem(AppAssets.icons.user, 2, '마이'),
             _buildNavItem(AppAssets.icons.timeCircle, 3, '시간'),
+            _buildNavItem(AppAssets.icons.timeCircle, 4, '후후'),
           ],
         ),
       ),

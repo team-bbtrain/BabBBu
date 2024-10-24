@@ -1,3 +1,4 @@
+import 'package:BabBBu/ui/screens/sign_up_page/agreement_page.dart';
 import 'package:BabBBu/ui/widgets/common/navigation.dart';
 import 'package:flutter/material.dart';
 import 'ui/screens/home_screen.dart';
@@ -29,13 +30,14 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _currentIndex = 0;
+  int _currentIndex = 4;
 
   final List<Widget> _children = [
     HomeScreen(),
     MapScreen(),
     SettingsScreen(),
     ExpirationDatePickerPage(),
+    AgreementPage(),
   ];
 
   void onTabTapped(int index) {
