@@ -25,6 +25,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
     return Scaffold(
       backgroundColor: AppColors.background50,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         actions: [
           TextButton(
             onPressed: () {
