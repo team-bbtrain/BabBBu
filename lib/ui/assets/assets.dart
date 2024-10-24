@@ -6,6 +6,7 @@ class AppAssets {
 class AppImages {
   final String logo = 'assets/images/logo.png';
   final String character = 'assets/images/character.png';
+  final String characterWithNote = 'assets/images/character_with_note.png';
 }
 
 class AppIcons {
