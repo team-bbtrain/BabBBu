@@ -1,3 +1,4 @@
+import 'package:BabBBu/ui/screens/guide_page/guide_page.dart';
 import 'package:BabBBu/ui/widgets/common/navigation.dart';
 import 'package:flutter/material.dart';
 import 'ui/screens/home_screen.dart';
@@ -32,7 +33,7 @@ class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
 
   final List<Widget> _children = [
-    HomeScreen(),
+    ServiceGuidePage(),
     MapScreen(),
     SettingsScreen(),
     ExpirationDatePickerPage(),

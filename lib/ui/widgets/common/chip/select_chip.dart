@@ -2,7 +2,7 @@ import 'package:BabBBu/ui/widgets/common/chip/chip.dart';
 import 'package:flutter/material.dart';
 
 class AppSelectChip extends StatefulWidget {
-  final double chipBarWidth, chipBarHeight, chipBarPadding, chipBarSpace;
+  final double chipBarSpace;
   final List<AppChip> appChips;
   final bool multipleSelection;
   // 단수 선택 옵션
@@ -14,9 +14,6 @@ class AppSelectChip extends StatefulWidget {
 
   const AppSelectChip({
     super.key,
-    required this.chipBarWidth,
-    required this.chipBarHeight,
-    required this.chipBarPadding,
     required this.chipBarSpace,
     required this.appChips,
     this.initialSelectedIndexes,
